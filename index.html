@@ -3,306 +3,335 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>نينو تكني — Nino Techy</title>
+<title>نينو تكني — أنظمة رقمية تشتغل</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@700;900&family=Almarai:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#0b0904;
-    --panel:#141009;
-    --line:#2b2013;
-    --orange:#ff5a1f;
-    --amber:#ffb020;
-    --cream:#f2e9dc;
-    --muted:#8f8172;
-  }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--bg);
-    color:var(--cream);
-    font-family:'IBM Plex Sans Arabic',sans-serif;
-    font-weight:400;
-    line-height:1.75;
-  }
-  .mono{font-family:'IBM Plex Mono',monospace;letter-spacing:.02em;}
-  h1,h2,h3{font-weight:600;line-height:1.3;}
-  a{color:inherit;text-decoration:none;}
-  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+:root{
+  --ink:#080604;
+  --ink-2:#100c07;
+  --line:rgba(255,140,60,.14);
+  --line-hard:rgba(255,140,60,.28);
+  --orange:#ff5a1f;
+  --amber:#ffab1f;
+  --cream:#f6efe6;
+  --muted:#9b8b7a;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--ink);color:var(--cream);
+  font-family:'Almarai',sans-serif;font-weight:400;line-height:1.85;
+  overflow-x:hidden;
+}
+h1,h2,h3,.kufi{font-family:'Noto Kufi Arabic',sans-serif;font-weight:900;line-height:1.35;}
+a{color:inherit;text-decoration:none;}
+.wrap{max-width:1200px;margin:0 auto;padding:0 34px;}
 
-  /* header */
-  header{
-    display:flex;justify-content:space-between;align-items:center;
-    padding:26px 32px;max-width:1180px;margin:0 auto;
-    border-bottom:1px solid var(--line);
-  }
-  .mark{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:600;}
-  .mark .dot{width:9px;height:9px;background:var(--orange);border-radius:50%;}
-  .status{
-    display:flex;align-items:center;gap:8px;
-    color:var(--muted);font-size:13px;
-  }
-  .status .dot{width:6px;height:6px;background:var(--amber);border-radius:50%;box-shadow:0 0 8px var(--amber);}
+/* ---------- nav ---------- */
+nav{
+  position:sticky;top:0;z-index:60;
+  background:rgba(8,6,4,.85);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.nav-in{
+  max-width:1200px;margin:0 auto;padding:20px 34px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.brand{font-family:'Noto Kufi Arabic';font-weight:900;font-size:19px;letter-spacing:-.3px;}
+.brand b{color:var(--orange);}
+.nav-mid{display:flex;gap:34px;font-size:14.5px;color:var(--muted);}
+.nav-mid a:hover{color:var(--cream);}
+.cta-sm{
+  background:var(--orange);color:#170800;padding:11px 22px;border-radius:2px;
+  font-weight:700;font-size:14px;
+}
 
-  /* hero */
-  .hero{
-    display:grid;grid-template-columns:1.4fr 1fr;
-    gap:60px;
-    padding:90px 0 100px;
-    border-bottom:1px solid var(--line);
-  }
-  .hero-copy .kicker{
-    color:var(--muted);font-size:14px;margin-bottom:22px;
-  }
-  .hero-copy h1{
-    font-size:clamp(34px,4.6vw,54px);
-    max-width:14ch;
-    margin-bottom:28px;
-  }
-  .hero-copy h1 em{
-    color:var(--orange);font-style:normal;
-  }
-  .hero-copy p{
-    color:var(--muted);font-size:17px;max-width:48ch;margin-bottom:36px;
-  }
-  .btn{
-    display:inline-block;background:var(--orange);color:#150800;
-    padding:14px 28px;font-weight:600;font-size:15px;border-radius:4px;
-  }
-  .btn-line{
-    display:inline-block;border:1px solid var(--line);color:var(--cream);
-    padding:13px 26px;font-size:15px;border-radius:4px;margin-inline-start:12px;
-  }
+/* ---------- hero ---------- */
+.hero{position:relative;padding:110px 0 90px;overflow:hidden;}
+.hero-bg{
+  position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(900px 500px at 78% 8%, rgba(255,90,31,.20), transparent 60%),
+    radial-gradient(700px 400px at 12% 90%, rgba(255,171,31,.10), transparent 60%);
+}
+.hero-rule{
+  position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background-image:linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size:calc(100% / 6) 100%;
+}
+.hero-in{position:relative;z-index:2;}
 
-  .panel{
-    background:var(--panel);border:1px solid var(--line);border-radius:8px;
-    padding:26px;align-self:start;
-  }
-  .panel-title{
-    font-size:13px;color:var(--muted);margin-bottom:20px;
-    display:flex;justify-content:space-between;
-  }
-  .panel-row{
-    display:flex;justify-content:space-between;
-    padding:13px 0;border-top:1px solid var(--line);
-    font-size:14.5px;
-  }
-  .panel-row:first-of-type{border-top:none;}
-  .panel-row .k{color:var(--muted);}
-  .panel-row .v{color:var(--amber);}
+.hero-tag{
+  display:inline-block;font-size:13px;color:var(--amber);
+  border:1px solid var(--line-hard);padding:6px 14px;border-radius:100px;
+  margin-bottom:34px;
+}
+.hero h1{
+  font-size:clamp(42px,8.2vw,104px);
+  line-height:1.12;letter-spacing:-.02em;
+  margin-bottom:0;
+}
+.hero h1 .l2{display:block;color:var(--orange);}
+.hero h1 .l3{
+  display:block;
+  -webkit-text-stroke:1.5px var(--orange);
+  color:transparent;
+}
+.hero-lower{
+  display:grid;grid-template-columns:1.15fr .85fr;gap:64px;
+  margin-top:52px;padding-top:44px;border-top:1px solid var(--line);
+  align-items:start;
+}
+.hero-lower p{color:var(--muted);font-size:18px;max-width:46ch;}
+.hero-actions{margin-top:32px;display:flex;gap:14px;flex-wrap:wrap;}
+.btn{
+  background:var(--orange);color:#170800;padding:16px 34px;
+  font-family:'Noto Kufi Arabic';font-weight:700;font-size:15px;border-radius:2px;
+  transition:background .18s ease;
+}
+.btn:hover{background:var(--amber);}
+.btn-out{
+  border:1px solid var(--line-hard);color:var(--cream);
+  padding:15px 30px;font-size:15px;border-radius:2px;
+  transition:border-color .18s ease;
+}
+.btn-out:hover{border-color:var(--orange);}
 
-  /* clients strip */
-  .clients{
-    padding:44px 0;border-bottom:1px solid var(--line);
-    display:flex;align-items:center;gap:40px;flex-wrap:wrap;
-  }
-  .clients .lbl{color:var(--muted);font-size:13px;white-space:nowrap;}
-  .clients .names{
-    display:flex;gap:34px;flex-wrap:wrap;
-    color:var(--muted);font-size:15px;
-  }
-  .clients .names span{color:var(--cream);}
+.hero-figs{display:grid;gap:22px;}
+.fig{display:flex;align-items:baseline;gap:16px;border-bottom:1px solid var(--line);padding-bottom:18px;}
+.fig .n{font-family:'Noto Kufi Arabic';font-weight:900;font-size:40px;color:var(--orange);line-height:1;}
+.fig .t{color:var(--muted);font-size:14.5px;}
 
-  /* services — definition list, not cards */
-  section{padding:100px 0;border-bottom:1px solid var(--line);}
-  .head-row{
-    display:flex;justify-content:space-between;align-items:flex-end;
-    gap:30px;margin-bottom:56px;flex-wrap:wrap;
-  }
-  .head-row .lbl{color:var(--muted);font-size:14px;}
-  .head-row h2{font-size:clamp(24px,3vw,34px);max-width:16ch;}
+/* ---------- marquee ---------- */
+.strip{
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  background:var(--ink-2);overflow:hidden;padding:18px 0;
+}
+.track{
+  display:flex;gap:56px;white-space:nowrap;
+  animation:slide 34s linear infinite;
+  color:var(--muted);font-size:15px;
+}
+.track span{color:var(--cream);opacity:.72;}
+@keyframes slide{from{transform:translateX(0);}to{transform:translateX(50%);}}
+@media (prefers-reduced-motion: reduce){.track{animation:none;}}
 
-  .service-row{
-    display:grid;grid-template-columns:220px 1fr 1fr;
-    gap:32px;padding:30px 0;border-top:1px solid var(--line);
-    align-items:start;
-  }
-  .service-row:last-child{border-bottom:1px solid var(--line);}
-  .service-row .name{font-size:19px;font-weight:600;}
-  .service-row .desc{color:var(--muted);font-size:15.5px;}
-  .service-row .tags{display:flex;flex-wrap:wrap;gap:8px;}
-  .service-row .tags span{
-    font-size:12.5px;color:var(--amber);border:1px solid var(--line);
-    padding:5px 10px;border-radius:20px;
-  }
+/* ---------- sections ---------- */
+section{padding:110px 0;}
+.sec-head{margin-bottom:66px;max-width:720px;}
+.sec-lbl{
+  color:var(--orange);font-size:13.5px;font-weight:700;margin-bottom:16px;display:block;
+}
+.sec-head h2{font-size:clamp(28px,4.4vw,46px);letter-spacing:-.015em;}
+.sec-head p{color:var(--muted);font-size:17.5px;margin-top:20px;}
 
-  /* work / clients detail */
-  .work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
-  .work-cell{background:var(--bg);padding:34px 28px;}
-  .work-cell .sector{color:var(--muted);font-size:13px;margin-bottom:10px;}
-  .work-cell .name{font-size:18px;font-weight:600;margin-bottom:10px;}
-  .work-cell .note{color:var(--muted);font-size:14.5px;}
+/* services — asymmetric editorial */
+.svc{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);}
+.svc-cell{background:var(--ink);padding:52px 44px;position:relative;}
+.svc-cell.wide{grid-column:span 2;}
+.svc-cell h3{font-size:clamp(21px,2.4vw,28px);margin-bottom:16px;}
+.svc-cell p{color:var(--muted);font-size:16px;max-width:52ch;}
+.svc-cell .out{
+  margin-top:26px;padding-top:18px;border-top:1px solid var(--line);
+  color:var(--amber);font-size:14.5px;
+}
 
-  /* process — horizontal */
-  .timeline{display:flex;gap:0;overflow-x:auto;padding-bottom:8px;}
-  .tl-step{
-    flex:1;min-width:220px;padding-inline-end:28px;position:relative;
-  }
-  .tl-step::before{
-    content:"";display:block;height:2px;background:var(--line);margin-bottom:24px;
-  }
-  .tl-step.active::before{background:var(--orange);}
-  .tl-step .idx{color:var(--muted);font-size:13px;margin-bottom:10px;}
-  .tl-step h3{font-size:18px;margin-bottom:10px;}
-  .tl-step p{color:var(--muted);font-size:14.5px;}
+/* proof rows */
+.proof-row{
+  display:grid;grid-template-columns:190px 1fr 200px;gap:36px;
+  padding:34px 0;border-top:1px solid var(--line);align-items:center;
+}
+.proof-row:last-child{border-bottom:1px solid var(--line);}
+.proof-row .who{font-family:'Noto Kufi Arabic';font-weight:700;font-size:18px;}
+.proof-row .what{color:var(--muted);font-size:16px;}
+.proof-row .res{color:var(--orange);font-size:15px;font-weight:700;text-align:end;}
 
-  /* cta */
-  .cta{
-    text-align:center;padding:120px 0;border-bottom:none;
-  }
-  .cta h2{font-size:clamp(28px,4vw,44px);max-width:20ch;margin:0 auto 20px;}
-  .cta p{color:var(--muted);font-size:16.5px;max-width:44ch;margin:0 auto 36px;}
+/* how */
+.how{background:var(--ink-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:34px;}
+.how-cell .bar{height:3px;background:var(--line-hard);margin-bottom:22px;}
+.how-cell:first-child .bar{background:var(--orange);}
+.how-cell h3{font-size:18px;margin-bottom:12px;}
+.how-cell p{color:var(--muted);font-size:15px;}
 
-  footer{padding:40px 32px;max-width:1180px;margin:0 auto;}
-  .footer-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;color:var(--muted);font-size:13px;}
+/* closing */
+.close{text-align:center;padding:140px 0;position:relative;overflow:hidden;}
+.close-bg{
+  position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(700px 380px at 50% 40%, rgba(255,90,31,.18), transparent 65%);
+}
+.close h2{position:relative;font-size:clamp(30px,5.4vw,60px);max-width:16ch;margin:0 auto 24px;letter-spacing:-.02em;}
+.close p{position:relative;color:var(--muted);font-size:18px;max-width:46ch;margin:0 auto 40px;}
+.close .btn{position:relative;}
 
-  @media (max-width:900px){
-    .hero{grid-template-columns:1fr;}
-    .work-grid{grid-template-columns:1fr;}
-    .service-row{grid-template-columns:1fr;}
-    header{flex-direction:column;gap:12px;align-items:flex-start;}
-  }
-  @media (prefers-reduced-motion: reduce){ *{transition:none !important;} }
+footer{border-top:1px solid var(--line);padding:38px 0;}
+.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:13.5px;}
+
+@media (max-width:920px){
+  .hero-lower{grid-template-columns:1fr;gap:44px;}
+  .svc{grid-template-columns:1fr;}
+  .svc-cell.wide{grid-column:span 1;}
+  .how-grid{grid-template-columns:1fr 1fr;gap:28px;}
+  .proof-row{grid-template-columns:1fr;gap:10px;}
+  .proof-row .res{text-align:start;}
+  .nav-mid{display:none;}
+  .hero-rule{background-size:calc(100% / 3) 100%;}
+}
 </style>
 </head>
 <body>
 
-<header>
-  <div class="mark"><span class="dot"></span>نينو تكني</div>
-  <div class="status"><span class="dot"></span><span class="mono">تأسست 2023 — القاهرة</span></div>
+<nav>
+  <div class="nav-in">
+    <div class="brand">نينو <b>تكني</b></div>
+    <div class="nav-mid">
+      <a href="#services">الخدمات</a>
+      <a href="#proof">الشغل</a>
+      <a href="#how">الطريقة</a>
+    </div>
+    <a href="#contact" class="cta-sm">ابدأ مشروعك</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-rule"></div>
+  <div class="wrap hero-in">
+    <span class="hero-tag">وكالة تقنية إبداعية · منذ 2023</span>
+    <h1>
+      الموقع الحلو<span class="l2">ما يدير شركة.</span>
+      <span class="l3">النظام يديرها.</span>
+    </h1>
+
+    <div class="hero-lower">
+      <div>
+        <p>نبني للشركات مواقع وأنظمة تشتغل مع بعض: تسجيل العملاء، متابعة الطلبات، لوحة تعرف منها وين تقف اليوم. مو صفحة جميلة وبعدها ترجع للإكسل والواتساب.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn">احجز جلسة تشخيص</a>
+          <a href="#proof" class="btn-out">شوف الشغل</a>
+        </div>
+      </div>
+      <div class="hero-figs">
+        <div class="fig"><div class="n">15+</div><div class="t">شركة اشتغلنا معها في المنطقة العربية</div></div>
+        <div class="fig"><div class="n">5</div><div class="t">قطاعات: طيران، سياحة، تعليم، لوجستيات، تجارة إلكترونية</div></div>
+        <div class="fig" style="border-bottom:none;"><div class="n">3</div><div class="t">سنوات نبني ونشغّل أنظمة حقيقية</div></div>
+      </div>
+    </div>
+  </div>
 </header>
 
-<div class="wrap">
-  <section class="hero" style="border-bottom:none;">
-    <div class="hero-copy">
-      <div class="kicker mono">وكالة تقنية وإبداعية</div>
-      <h1>نبني الأنظمة اللي تشغّل <em>أعمالك</em> بدل ما تشغّلك</h1>
-      <p>نينو تكني وكالة تقنية إبداعية من القاهرة، تشتغل مع أكثر من 15 عميل في الطيران والسياحة والتعليم واللوجستيات والتجارة الإلكترونية عبر المنطقة العربية.</p>
-      <a href="#contact" class="btn">ابدأ مشروعك</a>
-      <a href="#work" class="btn-line">شوف شغلنا</a>
-    </div>
-    <div class="panel mono">
-      <div class="panel-title"><span>لمحة عن الوكالة</span><span>2026</span></div>
-      <div class="panel-row"><span class="k">عملاء نشطين</span><span class="v">15+</span></div>
-      <div class="panel-row"><span class="k">قطاعات</span><span class="v">5</span></div>
-      <div class="panel-row"><span class="k">المقر</span><span class="v">القاهرة</span></div>
-      <div class="panel-row"><span class="k">نطاق العمل</span><span class="v">المنطقة العربية</span></div>
-    </div>
-  </section>
-</div>
-
-<div class="clients">
-  <div class="wrap" style="display:flex;gap:40px;flex-wrap:wrap;align-items:center;">
-    <span class="lbl mono">عملاء اشتغلنا معهم</span>
-    <div class="names">
-      <span>Egypt Knight Tours</span>
-      <span>Nile River Cruise</span>
-      <span>First Gift Shop</span>
-      <span>HLA Aviation</span>
-      <span>Eagle 1 Flight Academy</span>
-      <span>Elevana Academy</span>
-    </div>
+<div class="strip">
+  <div class="track">
+    <span>Egypt Knight Tours</span>·<span>HLA Aviation</span>·<span>Eagle 1 Flight Academy</span>·<span>Nile River Cruise</span>·<span>Elevana Academy</span>·<span>MA Logistics</span>·<span>First Gift Shop</span>·<span>WAYQ</span>·
+    <span>Egypt Knight Tours</span>·<span>HLA Aviation</span>·<span>Eagle 1 Flight Academy</span>·<span>Nile River Cruise</span>·<span>Elevana Academy</span>·<span>MA Logistics</span>·<span>First Gift Shop</span>·<span>WAYQ</span>·
   </div>
 </div>
 
 <section id="services">
   <div class="wrap">
-    <div class="head-row">
-      <div>
-        <div class="lbl mono">مجالات العمل</div>
-      </div>
-      <h2>مو بس تصميم، أنظمة تشتغل من أول يوم</h2>
+    <div class="sec-head">
+      <span class="sec-lbl">الخدمات</span>
+      <h2>ثلاث طبقات، نشتغل عليها بالترتيب</h2>
+      <p>ما نبدأ بالتصميم. نبدأ من الشغل اليومي اللي يضيع وقتك، ونبني فوقه.</p>
     </div>
 
-    <div class="service-row">
-      <div class="name">مواقع ومنصات</div>
-      <div class="desc">مواقع وتطبيقات ويب مبنية على أساس تقني صلب، من موقع تعريفي لمدرسة طيران إلى منصة حجوزات كاملة.</div>
-      <div class="tags"><span>Next.js</span><span>Tailwind</span><span>لوحات تحكم</span></div>
-    </div>
-    <div class="service-row">
-      <div class="name">أنظمة داخلية</div>
-      <div class="desc">أنظمة متابعة وإدارة تحل محل الجداول المبعثرة والرسائل الضائعة، وتربط فريقك بمصدر واحد للبيانات.</div>
-      <div class="tags"><span>CRM</span><span>أتمتة</span><span>تقارير</span></div>
-    </div>
-    <div class="service-row">
-      <div class="name">هوية ومحتوى بصري</div>
-      <div class="desc">هوية بصرية ومحتوى تسويقي مبني على فهم حقيقي للمنتج، مو قالب جاهز يتكرر عند كل عميل.</div>
-      <div class="tags"><span>هوية بصرية</span><span>محتوى</span><span>عروض تقديمية</span></div>
-    </div>
-  </div>
-</section>
-
-<section id="work">
-  <div class="wrap">
-    <div class="head-row">
-      <div class="lbl mono">نماذج من الشغل</div>
-      <h2>من قطاعات مختلفة، بنفس مستوى الدقة</h2>
-    </div>
-    <div class="work-grid">
-      <div class="work-cell">
-        <div class="sector mono">لوجستيات</div>
-        <div class="name">MA Logistics</div>
-        <div class="note">بناء موقع كامل مع نظام تتبع ومبيعات ولوحة أداء إدارية.</div>
+    <div class="svc">
+      <div class="svc-cell wide">
+        <h3>الأنظمة الداخلية</h3>
+        <p>المكان اللي تضيع فيه الشركات: طلبات على الواتساب، عملاء في ورقة، مواعيد في رأس الموظف. نحوّلها لنظام واحد يسجّل كل شي ويطلعك تقرير بدل ما تسأل.</p>
+        <div class="out">النتيجة: تعرف حالة كل عميل وكل طلب من شاشة واحدة.</div>
       </div>
-      <div class="work-cell">
-        <div class="sector mono">طيران</div>
-        <div class="name">HLA Aviation</div>
-        <div class="note">تنظيف وتنسيق بيانات التسجيل لتسهيل متابعة الطلاب.</div>
+      <div class="svc-cell">
+        <h3>الموقع والمنتج الرقمي</h3>
+        <p>موقع سريع يشرح خدمتك بوضوح ويحوّل الزائر لعميل، أو منتج كامل بحجوزات ودفع ولوحة تحكم.</p>
+        <div class="out">النتيجة: قناة تجيب لك عملاء، مو بروفايل ساكن.</div>
       </div>
-      <div class="work-cell">
-        <div class="sector mono">تنقل ذكي</div>
-        <div class="name">WAYQ</div>
-        <div class="note">عرض تقديمي لمنصة تنقل متميزة، من الفكرة إلى صياغة العرض.</div>
+      <div class="svc-cell">
+        <h3>الهوية والمحتوى</h3>
+        <p>هوية بصرية ومحتوى مبني على منتجك الحقيقي وسوقك، بلغة عملائك مو بلغة قوالب جاهزة.</p>
+        <div class="out">النتيجة: شكل واحد متسق في كل مكان يشوفك فيه العميل.</div>
       </div>
     </div>
   </div>
 </section>
 
-<section>
+<section id="proof">
   <div class="wrap">
-    <div class="head-row">
-      <div class="lbl mono">طريقة الشغل</div>
-      <h2>أربع خطوات، مافيها اختصار</h2>
+    <div class="sec-head">
+      <span class="sec-lbl">الشغل</span>
+      <h2>مشاريع من قطاعات مختلفة</h2>
     </div>
-    <div class="timeline">
-      <div class="tl-step active">
-        <div class="idx mono">فهم</div>
-        <h3>نسمع بزنسك</h3>
-        <p>قبل أي تصميم أو كود، نفهم كيف يشتغل مشروعك فعلياً.</p>
+
+    <div class="proof-row">
+      <div class="who">MA Logistics</div>
+      <div class="what">موقع كامل مع نظام تتبع شحنات، إدارة مبيعات، ولوحة أداء للإدارة.</div>
+      <div class="res">متابعة شحنة من مكان واحد</div>
+    </div>
+    <div class="proof-row">
+      <div class="who">HLA Aviation</div>
+      <div class="what">إعادة بناء وتنظيم بيانات تسجيل الطلاب المبعثرة إلى سجل واحد منظم.</div>
+      <div class="res">لا ملفات ضائعة</div>
+    </div>
+    <div class="proof-row">
+      <div class="who">WAYQ</div>
+      <div class="what">صياغة وتصميم عرض منصة تنقل متميزة من الفكرة حتى العرض النهائي.</div>
+      <div class="res">عرض جاهز للمستثمر</div>
+    </div>
+    <div class="proof-row">
+      <div class="who">Eagle 1 Flight Academy</div>
+      <div class="what">هوية ووجود رقمي لأكاديمية طيران تستقبل طلاب من أكثر من دولة.</div>
+      <div class="res">تسجيل أوضح للطلاب</div>
+    </div>
+  </div>
+</section>
+
+<section class="how" id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-lbl">الطريقة</span>
+      <h2>نغلط على الورق، مو قدام عملائك</h2>
+    </div>
+    <div class="how-grid">
+      <div class="how-cell">
+        <div class="bar"></div>
+        <h3>نشخّص</h3>
+        <p>جلسة نمشي فيها على يومك: وين يضيع الوقت، ووين تتكرر الأخطاء.</p>
       </div>
-      <div class="tl-step active">
-        <div class="idx mono">خطة</div>
-        <h3>نرسم الحل</h3>
-        <p>خطة عمل مبنية على حالتك، مو قالب عام.</p>
+      <div class="how-cell">
+        <div class="bar"></div>
+        <h3>نرسم</h3>
+        <p>خطة مكتوبة فيها شكل النظام والمراحل والتكلفة، قبل أي كود.</p>
       </div>
-      <div class="tl-step">
-        <div class="idx mono">تنفيذ</div>
-        <h3>نبني ونختبر</h3>
-        <p>نبني على مراحل واضحة، وتشوف التقدم أول بأول.</p>
+      <div class="how-cell">
+        <div class="bar"></div>
+        <h3>نبني</h3>
+        <p>تسليم على مراحل، تشوف كل مرحلة وتجرّبها قبل نكمل.</p>
       </div>
-      <div class="tl-step">
-        <div class="idx mono">متابعة</div>
-        <h3>نبقى بعد التسليم</h3>
-        <p>نراقب كيف يشتغل النظام فعلياً، ونعدّل لما يحتاج.</p>
+      <div class="how-cell">
+        <div class="bar"></div>
+        <h3>نشغّل</h3>
+        <p>ندرّب فريقك ونتابع أول شهور التشغيل ونعدّل حسب الواقع.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="cta" id="contact" style="border-bottom:none;">
+<section class="close" id="contact">
+  <div class="close-bg"></div>
   <div class="wrap">
-    <div class="lbl mono" style="margin-bottom:18px;">تواصل</div>
-    <h2>عندك مشروع محتاج نظام يشتغل صح؟</h2>
-    <p>احكيلنا عن بزنسك، ونرجعلك بخطوة أولى واضحة خلال يومين.</p>
-    <a href="#" class="btn">احجز جلسة</a>
+    <h2>احكيلنا وين يتعطل شغلك</h2>
+    <p>جلسة تشخيص واحدة، ونرجعلك بخطة أولى واضحة: إيش نبني، وليش، وبكم.</p>
+    <a href="mailto:hello@ninotechy.com" class="btn">احجز جلسة تشخيص</a>
   </div>
 </section>
 
 <footer>
-  <div class="footer-row">
-    <span>نينو تكني — القاهرة</span>
-    <span class="mono">© 2026</span>
+  <div class="wrap foot">
+    <span class="brand">نينو <b>تكني</b></span>
+    <span>@Nino.techy</span>
+    <span>© 2026</span>
   </div>
 </footer>
 
