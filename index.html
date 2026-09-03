@@ -6,7 +6,7 @@
 <title>نينو تكني — أنظمة رقمية تشتغل</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@700;900&family=Almarai:wght@300;400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
   --ink:#080604;
@@ -22,10 +22,10 @@
 html{scroll-behavior:smooth;}
 body{
   background:var(--ink);color:var(--cream);
-  font-family:'Almarai',sans-serif;font-weight:400;line-height:1.85;
+  font-family:'IBM Plex Sans Arabic',sans-serif;font-weight:400;line-height:1.85;
   overflow-x:hidden;
 }
-h1,h2,h3,.kufi{font-family:'Noto Kufi Arabic',sans-serif;font-weight:900;line-height:1.35;}
+h1,h2,h3,.kufi{font-family:'IBM Plex Sans Arabic',sans-serif;font-weight:700;line-height:1.35;}
 a{color:inherit;text-decoration:none;}
 .wrap{max-width:1200px;margin:0 auto;padding:0 34px;}
 
@@ -39,7 +39,7 @@ nav{
   max-width:1200px;margin:0 auto;padding:20px 34px;
   display:flex;align-items:center;justify-content:space-between;
 }
-.brand{font-family:'Noto Kufi Arabic';font-weight:900;font-size:19px;letter-spacing:-.3px;}
+.brand{font-family:'IBM Plex Sans Arabic';font-weight:700;font-size:19px;letter-spacing:-.3px;}
 .brand b{color:var(--orange);}
 .nav-mid{display:flex;gap:34px;font-size:14.5px;color:var(--muted);}
 .nav-mid a:hover{color:var(--cream);}
@@ -64,7 +64,7 @@ nav{
 .hero-in{position:relative;z-index:2;}
 
 .hero-tag{
-  display:inline-block;font-size:13px;color:var(--amber);
+  display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--amber);
   border:1px solid var(--line-hard);padding:6px 14px;border-radius:100px;
   margin-bottom:34px;
 }
@@ -88,7 +88,7 @@ nav{
 .hero-actions{margin-top:32px;display:flex;gap:14px;flex-wrap:wrap;}
 .btn{
   background:var(--orange);color:#170800;padding:16px 34px;
-  font-family:'Noto Kufi Arabic';font-weight:700;font-size:15px;border-radius:2px;
+  font-family:'IBM Plex Sans Arabic';font-weight:600;font-size:15px;border-radius:2px;
   transition:background .18s ease;
 }
 .btn:hover{background:var(--amber);}
@@ -101,7 +101,7 @@ nav{
 
 .hero-figs{display:grid;gap:22px;}
 .fig{display:flex;align-items:baseline;gap:16px;border-bottom:1px solid var(--line);padding-bottom:18px;}
-.fig .n{font-family:'Noto Kufi Arabic';font-weight:900;font-size:40px;color:var(--orange);line-height:1;}
+.fig .n{font-family:'IBM Plex Mono';font-weight:500;font-size:40px;color:var(--orange);line-height:1;}
 .fig .t{color:var(--muted);font-size:14.5px;}
 
 /* ---------- marquee ---------- */
@@ -144,7 +144,7 @@ section{padding:110px 0;}
   padding:34px 0;border-top:1px solid var(--line);align-items:center;
 }
 .proof-row:last-child{border-bottom:1px solid var(--line);}
-.proof-row .who{font-family:'Noto Kufi Arabic';font-weight:700;font-size:18px;}
+.proof-row .who{font-family:'IBM Plex Sans Arabic';font-weight:600;font-size:18px;}
 .proof-row .what{color:var(--muted);font-size:16px;}
 .proof-row .res{color:var(--orange);font-size:15px;font-weight:700;text-align:end;}
 
