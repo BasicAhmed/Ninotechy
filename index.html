@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>نينو تكني — Nino Techy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0904;
+    --panel:#141009;
+    --line:#2b2013;
+    --orange:#ff5a1f;
+    --amber:#ffb020;
+    --cream:#f2e9dc;
+    --muted:#8f8172;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--cream);
+    font-family:'IBM Plex Sans Arabic',sans-serif;
+    font-weight:400;
+    line-height:1.75;
+  }
+  .mono{font-family:'IBM Plex Mono',monospace;letter-spacing:.02em;}
+  h1,h2,h3{font-weight:600;line-height:1.3;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+
+  /* header */
+  header{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:26px 32px;max-width:1180px;margin:0 auto;
+    border-bottom:1px solid var(--line);
+  }
+  .mark{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:600;}
+  .mark .dot{width:9px;height:9px;background:var(--orange);border-radius:50%;}
+  .status{
+    display:flex;align-items:center;gap:8px;
+    color:var(--muted);font-size:13px;
+  }
+  .status .dot{width:6px;height:6px;background:var(--amber);border-radius:50%;box-shadow:0 0 8px var(--amber);}
+
+  /* hero */
+  .hero{
+    display:grid;grid-template-columns:1.4fr 1fr;
+    gap:60px;
+    padding:90px 0 100px;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-copy .kicker{
+    color:var(--muted);font-size:14px;margin-bottom:22px;
+  }
+  .hero-copy h1{
+    font-size:clamp(34px,4.6vw,54px);
+    max-width:14ch;
+    margin-bottom:28px;
+  }
+  .hero-copy h1 em{
+    color:var(--orange);font-style:normal;
+  }
+  .hero-copy p{
+    color:var(--muted);font-size:17px;max-width:48ch;margin-bottom:36px;
+  }
+  .btn{
+    display:inline-block;background:var(--orange);color:#150800;
+    padding:14px 28px;font-weight:600;font-size:15px;border-radius:4px;
+  }
+  .btn-line{
+    display:inline-block;border:1px solid var(--line);color:var(--cream);
+    padding:13px 26px;font-size:15px;border-radius:4px;margin-inline-start:12px;
+  }
+
+  .panel{
+    background:var(--panel);border:1px solid var(--line);border-radius:8px;
+    padding:26px;align-self:start;
+  }
+  .panel-title{
+    font-size:13px;color:var(--muted);margin-bottom:20px;
+    display:flex;justify-content:space-between;
+  }
+  .panel-row{
+    display:flex;justify-content:space-between;
+    padding:13px 0;border-top:1px solid var(--line);
+    font-size:14.5px;
+  }
+  .panel-row:first-of-type{border-top:none;}
+  .panel-row .k{color:var(--muted);}
+  .panel-row .v{color:var(--amber);}
+
+  /* clients strip */
+  .clients{
+    padding:44px 0;border-bottom:1px solid var(--line);
+    display:flex;align-items:center;gap:40px;flex-wrap:wrap;
+  }
+  .clients .lbl{color:var(--muted);font-size:13px;white-space:nowrap;}
+  .clients .names{
+    display:flex;gap:34px;flex-wrap:wrap;
+    color:var(--muted);font-size:15px;
+  }
+  .clients .names span{color:var(--cream);}
+
+  /* services — definition list, not cards */
+  section{padding:100px 0;border-bottom:1px solid var(--line);}
+  .head-row{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    gap:30px;margin-bottom:56px;flex-wrap:wrap;
+  }
+  .head-row .lbl{color:var(--muted);font-size:14px;}
+  .head-row h2{font-size:clamp(24px,3vw,34px);max-width:16ch;}
+
+  .service-row{
+    display:grid;grid-template-columns:220px 1fr 1fr;
+    gap:32px;padding:30px 0;border-top:1px solid var(--line);
+    align-items:start;
+  }
+  .service-row:last-child{border-bottom:1px solid var(--line);}
+  .service-row .name{font-size:19px;font-weight:600;}
+  .service-row .desc{color:var(--muted);font-size:15.5px;}
+  .service-row .tags{display:flex;flex-wrap:wrap;gap:8px;}
+  .service-row .tags span{
+    font-size:12.5px;color:var(--amber);border:1px solid var(--line);
+    padding:5px 10px;border-radius:20px;
+  }
+
+  /* work / clients detail */
+  .work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  .work-cell{background:var(--bg);padding:34px 28px;}
+  .work-cell .sector{color:var(--muted);font-size:13px;margin-bottom:10px;}
+  .work-cell .name{font-size:18px;font-weight:600;margin-bottom:10px;}
+  .work-cell .note{color:var(--muted);font-size:14.5px;}
+
+  /* process — horizontal */
+  .timeline{display:flex;gap:0;overflow-x:auto;padding-bottom:8px;}
+  .tl-step{
+    flex:1;min-width:220px;padding-inline-end:28px;position:relative;
+  }
+  .tl-step::before{
+    content:"";display:block;height:2px;background:var(--line);margin-bottom:24px;
+  }
+  .tl-step.active::before{background:var(--orange);}
+  .tl-step .idx{color:var(--muted);font-size:13px;margin-bottom:10px;}
+  .tl-step h3{font-size:18px;margin-bottom:10px;}
+  .tl-step p{color:var(--muted);font-size:14.5px;}
+
+  /* cta */
+  .cta{
+    text-align:center;padding:120px 0;border-bottom:none;
+  }
+  .cta h2{font-size:clamp(28px,4vw,44px);max-width:20ch;margin:0 auto 20px;}
+  .cta p{color:var(--muted);font-size:16.5px;max-width:44ch;margin:0 auto 36px;}
+
+  footer{padding:40px 32px;max-width:1180px;margin:0 auto;}
+  .footer-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;color:var(--muted);font-size:13px;}
+
+  @media (max-width:900px){
+    .hero{grid-template-columns:1fr;}
+    .work-grid{grid-template-columns:1fr;}
+    .service-row{grid-template-columns:1fr;}
+    header{flex-direction:column;gap:12px;align-items:flex-start;}
+  }
+  @media (prefers-reduced-motion: reduce){ *{transition:none !important;} }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="mark"><span class="dot"></span>نينو تكني</div>
+  <div class="status"><span class="dot"></span><span class="mono">تأسست 2023 — القاهرة</span></div>
+</header>
+
+<div class="wrap">
+  <section class="hero" style="border-bottom:none;">
+    <div class="hero-copy">
+      <div class="kicker mono">وكالة تقنية وإبداعية</div>
+      <h1>نبني الأنظمة اللي تشغّل <em>أعمالك</em> بدل ما تشغّلك</h1>
+      <p>نينو تكني وكالة تقنية إبداعية من القاهرة، تشتغل مع أكثر من 15 عميل في الطيران والسياحة والتعليم واللوجستيات والتجارة الإلكترونية عبر المنطقة العربية.</p>
+      <a href="#contact" class="btn">ابدأ مشروعك</a>
+      <a href="#work" class="btn-line">شوف شغلنا</a>
+    </div>
+    <div class="panel mono">
+      <div class="panel-title"><span>لمحة عن الوكالة</span><span>2026</span></div>
+      <div class="panel-row"><span class="k">عملاء نشطين</span><span class="v">15+</span></div>
+      <div class="panel-row"><span class="k">قطاعات</span><span class="v">5</span></div>
+      <div class="panel-row"><span class="k">المقر</span><span class="v">القاهرة</span></div>
+      <div class="panel-row"><span class="k">نطاق العمل</span><span class="v">المنطقة العربية</span></div>
+    </div>
+  </section>
+</div>
+
+<div class="clients">
+  <div class="wrap" style="display:flex;gap:40px;flex-wrap:wrap;align-items:center;">
+    <span class="lbl mono">عملاء اشتغلنا معهم</span>
+    <div class="names">
+      <span>Egypt Knight Tours</span>
+      <span>Nile River Cruise</span>
+      <span>First Gift Shop</span>
+      <span>HLA Aviation</span>
+      <span>Eagle 1 Flight Academy</span>
+      <span>Elevana Academy</span>
+    </div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <div class="lbl mono">مجالات العمل</div>
+      </div>
+      <h2>مو بس تصميم، أنظمة تشتغل من أول يوم</h2>
+    </div>
+
+    <div class="service-row">
+      <div class="name">مواقع ومنصات</div>
+      <div class="desc">مواقع وتطبيقات ويب مبنية على أساس تقني صلب، من موقع تعريفي لمدرسة طيران إلى منصة حجوزات كاملة.</div>
+      <div class="tags"><span>Next.js</span><span>Tailwind</span><span>لوحات تحكم</span></div>
+    </div>
+    <div class="service-row">
+      <div class="name">أنظمة داخلية</div>
+      <div class="desc">أنظمة متابعة وإدارة تحل محل الجداول المبعثرة والرسائل الضائعة، وتربط فريقك بمصدر واحد للبيانات.</div>
+      <div class="tags"><span>CRM</span><span>أتمتة</span><span>تقارير</span></div>
+    </div>
+    <div class="service-row">
+      <div class="name">هوية ومحتوى بصري</div>
+      <div class="desc">هوية بصرية ومحتوى تسويقي مبني على فهم حقيقي للمنتج، مو قالب جاهز يتكرر عند كل عميل.</div>
+      <div class="tags"><span>هوية بصرية</span><span>محتوى</span><span>عروض تقديمية</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="head-row">
+      <div class="lbl mono">نماذج من الشغل</div>
+      <h2>من قطاعات مختلفة، بنفس مستوى الدقة</h2>
+    </div>
+    <div class="work-grid">
+      <div class="work-cell">
+        <div class="sector mono">لوجستيات</div>
+        <div class="name">MA Logistics</div>
+        <div class="note">بناء موقع كامل مع نظام تتبع ومبيعات ولوحة أداء إدارية.</div>
+      </div>
+      <div class="work-cell">
+        <div class="sector mono">طيران</div>
+        <div class="name">HLA Aviation</div>
+        <div class="note">تنظيف وتنسيق بيانات التسجيل لتسهيل متابعة الطلاب.</div>
+      </div>
+      <div class="work-cell">
+        <div class="sector mono">تنقل ذكي</div>
+        <div class="name">WAYQ</div>
+        <div class="note">عرض تقديمي لمنصة تنقل متميزة، من الفكرة إلى صياغة العرض.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head-row">
+      <div class="lbl mono">طريقة الشغل</div>
+      <h2>أربع خطوات، مافيها اختصار</h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-step active">
+        <div class="idx mono">فهم</div>
+        <h3>نسمع بزنسك</h3>
+        <p>قبل أي تصميم أو كود، نفهم كيف يشتغل مشروعك فعلياً.</p>
+      </div>
+      <div class="tl-step active">
+        <div class="idx mono">خطة</div>
+        <h3>نرسم الحل</h3>
+        <p>خطة عمل مبنية على حالتك، مو قالب عام.</p>
+      </div>
+      <div class="tl-step">
+        <div class="idx mono">تنفيذ</div>
+        <h3>نبني ونختبر</h3>
+        <p>نبني على مراحل واضحة، وتشوف التقدم أول بأول.</p>
+      </div>
+      <div class="tl-step">
+        <div class="idx mono">متابعة</div>
+        <h3>نبقى بعد التسليم</h3>
+        <p>نراقب كيف يشتغل النظام فعلياً، ونعدّل لما يحتاج.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact" style="border-bottom:none;">
+  <div class="wrap">
+    <div class="lbl mono" style="margin-bottom:18px;">تواصل</div>
+    <h2>عندك مشروع محتاج نظام يشتغل صح؟</h2>
+    <p>احكيلنا عن بزنسك، ونرجعلك بخطوة أولى واضحة خلال يومين.</p>
+    <a href="#" class="btn">احجز جلسة</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-row">
+    <span>نينو تكني — القاهرة</span>
+    <span class="mono">© 2026</span>
+  </div>
+</footer>
+
+</body>
+</html>
