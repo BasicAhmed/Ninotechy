@@ -91,14 +91,35 @@ img,svg{display:block;max-width:100%;}
 .cmd:hover::after{transform:translateX(3px);}
 .cmd-lg{font-size:15px;padding:10px 2px;}
 
-/* ---- nav ---- */
-nav{position:fixed;top:0;left:0;right:0;z-index:80;padding:22px 30px;
-  display:flex;align-items:center;justify-content:space-between;
-  pointer-events:none;
+/* primary pill CTA — the strong visual anchor */
+.btn-primary{
+  display:inline-flex;align-items:center;gap:10px;
+  background:linear-gradient(135deg,var(--brand),var(--brand-2));
+  color:#0a0400;font-family:'Space Grotesk';font-weight:700;font-size:14px;
+  padding:13px 26px;border-radius:100px;border:none;cursor:pointer;
+  box-shadow:0 0 0 1px rgba(255,255,255,.08) inset, 0 10px 26px -8px rgba(207,69,25,.6);
+  transition:transform .25s ease, box-shadow .25s ease;
 }
-nav > *{pointer-events:auto;}
-.icon-mark{width:clamp(40px,5vw,58px);height:clamp(40px,5vw,58px);transition:filter .3s ease, transform .3s ease;filter:drop-shadow(0 0 10px rgba(207,69,25,.35));}
-.icon-mark:hover{transform:scale(1.06) rotate(-4deg);filter:drop-shadow(0 0 18px rgba(207,69,25,.6));}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 0 1px rgba(255,255,255,.1) inset, 0 16px 36px -6px rgba(207,69,25,.75);}
+.btn-primary.lg{padding:18px 36px;font-size:17px;}
+.btn-secondary{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(255,255,255,.04);color:var(--white);
+  font-family:'Space Grotesk';font-weight:600;font-size:14px;
+  padding:12px 25px;border-radius:100px;border:1px solid rgba(255,255,255,.14);
+  transition:border-color .25s ease, background .25s ease;
+}
+.btn-secondary:hover{border-color:var(--brand);background:rgba(207,69,25,.08);}
+.btn-secondary.lg{padding:17px 35px;font-size:17px;}
+
+/* ---- nav ---- */
+nav{position:fixed;top:0;left:0;right:0;z-index:80;padding:18px 30px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:linear-gradient(180deg, rgba(5,4,9,.88) 0%, rgba(5,4,9,.55) 70%, transparent 100%);
+  backdrop-filter:blur(10px);
+}
+.icon-mark{width:clamp(58px,8vw,92px);height:clamp(58px,8vw,92px);transition:filter .3s ease, transform .3s ease;filter:drop-shadow(0 0 16px rgba(207,69,25,.5));}
+.icon-mark:hover{transform:scale(1.06) rotate(-4deg);filter:drop-shadow(0 0 26px rgba(207,69,25,.75));}
 .icon-mark svg{width:100%;height:100%;}
 .nav-right{display:flex;align-items:center;gap:26px;}
 .stage-label{font-family:'IBM Plex Mono';font-size:11px;color:var(--dim);letter-spacing:.12em;display:none;}
@@ -135,7 +156,8 @@ section{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction
 .kinetic .row span{display:inline-block;transform:translateY(110%);animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards;}
 .kinetic .row:nth-child(2) span{animation-delay:.16s;color:var(--brand-2);}
 @keyframes rise{to{transform:translateY(0);}}
-.hero p.sub{color:var(--dim);font-size:18px;max-width:50ch;margin:0 auto 46px;}
+.hero p.sub{color:var(--dim);font-size:18px;max-width:50ch;margin:0 auto 40px;}
+.hero-actions{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:8px;}
 .scroll-cue{margin-top:8px;display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--dim);font-size:11px;}
 .scroll-cue .line{width:1px;height:38px;background:linear-gradient(var(--brand), transparent);animation:drop 1.8s ease-in-out infinite;}
 @keyframes drop{0%{opacity:0;transform:scaleY(0);transform-origin:top;}40%{opacity:1;transform:scaleY(1);transform-origin:top;}100%{opacity:0;transform:scaleY(1);transform-origin:bottom;}}
@@ -184,20 +206,50 @@ section{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction
 .log-line b{color:var(--white);font-weight:500;}
 .log-note{margin-top:30px;color:var(--dim);font-family:'IBM Plex Mono';font-size:12.5px;}
 
-/* viewport: desktop snapshot frame with corner brackets, no card */
-.viewport{position:relative;width:100%;aspect-ratio:16/10;margin-top:20px;overflow:hidden;background:var(--void-2);}
-.viewport.portrait{aspect-ratio:9/16;max-width:280px;margin-left:auto;margin-right:auto;}
-.viewport img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;}
-.viewport .corner{position:absolute;width:16px;height:16px;border-color:var(--brand);opacity:.8;}
-.viewport .corner.tl{top:0;left:0;border-top:1.5px solid;border-left:1.5px solid;}
-.viewport .corner.tr{top:0;right:0;border-top:1.5px solid;border-right:1.5px solid;}
-.viewport .corner.bl{bottom:0;left:0;border-bottom:1.5px solid;border-left:1.5px solid;}
-.viewport .corner.br{bottom:0;right:0;border-bottom:1.5px solid;border-right:1.5px solid;}
-.viewport .placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
-  background:
-    repeating-linear-gradient(45deg, rgba(255,255,255,.02) 0 2px, transparent 2px 14px);
-  color:var(--dim);font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.1em;}
-.viewport .placeholder svg{width:30px;height:30px;opacity:.5;margin-bottom:4px;}
+/* device mockups — MacBook for desktop snapshots, iPhone for portrait */
+.mockup{margin-top:28px;}
+.mockup-mac{max-width:640px;}
+.mac-shell{
+  position:relative;padding:16px 16px 0;border-radius:16px 16px 5px 5px;
+  background:linear-gradient(160deg,#221d26,#0d0b12);
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:0 40px 70px -30px rgba(0,0,0,.7), 0 0 50px -10px rgba(207,69,25,.14);
+}
+.mac-cam{position:absolute;top:6px;left:50%;transform:translateX(-50%);width:5px;height:5px;border-radius:50%;
+  background:#050409;box-shadow:0 0 0 1px rgba(255,255,255,.12);}
+.mac-screen{position:relative;aspect-ratio:16/10.2;border-radius:7px 7px 0 0;overflow:hidden;background:var(--void-2);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);}
+.mac-screen img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;}
+.mac-base{height:16px;border-radius:0 0 12px 12px;position:relative;
+  background:linear-gradient(180deg,#2a252f,#140f19);
+  box-shadow:0 10px 20px -6px rgba(0,0,0,.6);}
+.mac-base::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:96px;height:5px;background:var(--void);border-radius:0 0 7px 7px;}
+.mac-shadow{height:18px;margin:0 auto;width:88%;
+  background:radial-gradient(ellipse at center, rgba(0,0,0,.55), transparent 75%);
+  filter:blur(2px);}
+
+.mockup-phone{max-width:230px;margin-left:auto;margin-right:auto;}
+.phone-shell{
+  position:relative;padding:9px;border-radius:36px;
+  background:linear-gradient(165deg,#221d26,#0d0b12);
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:0 40px 70px -30px rgba(0,0,0,.7), 0 0 40px -8px rgba(207,69,25,.16);
+}
+.phone-screen{position:relative;aspect-ratio:9/19.4;border-radius:28px;overflow:hidden;background:var(--void-2);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);}
+.phone-screen img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;}
+.phone-island{position:absolute;top:14px;left:50%;transform:translateX(-50%);
+  width:70px;height:20px;border-radius:100px;background:#050409;z-index:2;
+  box-shadow:0 0 0 1px rgba(255,255,255,.06);}
+.phone-shell::before{content:"";position:absolute;right:-2px;top:90px;width:2px;height:46px;background:rgba(255,255,255,.12);border-radius:2px;}
+.phone-shell::after{content:"";position:absolute;left:-2px;top:70px;width:2px;height:26px;background:rgba(255,255,255,.12);border-radius:2px;}
+
+.mockup .placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+  background:repeating-linear-gradient(45deg, rgba(255,255,255,.02) 0 2px, transparent 2px 14px);
+  color:var(--dim);font-family:'IBM Plex Mono';font-size:10.5px;letter-spacing:.1em;text-align:center;padding:0 16px;}
+.mockup .placeholder svg{width:26px;height:26px;opacity:.5;margin-bottom:2px;}
+.mockup-caption{margin-top:14px;text-align:center;font-family:'IBM Plex Mono';font-size:11px;color:var(--dim);letter-spacing:.08em;}
 
 /* ---- future / manifesto ---- */
 .manifesto{display:flex;flex-direction:column;gap:6px;}
@@ -264,7 +316,7 @@ footer{position:relative;z-index:2;padding:60px 0 50px;border-top:1px solid var(
   </a>
   <div class="nav-right">
     <span class="stage-label mono" id="stageLabel">01 · LAUNCH</span>
-    <a href="#briefing" class="cmd">START MISSION</a>
+    <a href="#briefing" class="btn-primary">START MISSION</a>
   </div>
 </nav>
 
@@ -289,6 +341,10 @@ footer{position:relative;z-index:2;padding:60px 0 50px;border-top:1px solid var(
       <span class="row"><span>OUTSIDE THE BOX.</span></span>
     </h1>
     <p class="sub">Website design, mobile app development and custom software builds for businesses that aren't interested in looking like everyone else. Keep scrolling — the mission has already started.</p>
+    <div class="hero-actions">
+      <a href="#briefing" class="btn-primary lg">Launch Your Project →</a>
+      <a href="#missions" class="btn-secondary lg">See Our Work</a>
+    </div>
     <div class="coord-tags mono">
       <span>SIGNAL: STABLE</span>
       <span>SECTOR: 01 // EARTH ORBIT</span>
@@ -364,127 +420,198 @@ footer{position:relative;z-index:2;padding:60px 0 50px;border-top:1px solid var(
       <div class="log-row">
         <div class="log-top"><span class="log-coord mono">SECTOR // TRAVEL & TOURISM</span></div>
         <div class="log-name">Egypt Knight Tours</div>
-      <div class="viewport">
-        <img src="egypt-knight.png" alt="Egypt Knight Tours homepage desktop screenshot" loading="lazy">
-        <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      <div class="mockup mockup-mac">
+        <div class="mac-shell">
+          <div class="mac-cam"></div>
+          <div class="mac-screen"><img src="egypt-knight.png" alt="Egypt Knight Tours homepage desktop screenshot" loading="lazy"></div>
+          <div class="mac-base"></div>
+        </div>
+        <div class="mac-shadow"></div>
       </div>
+
         <p class="log-line">A modern tourism website built around Egypt tours — tour discovery, booking, customer inquiries and tourism content.</p>
       </div>
       <div class="log-row">
         <div class="log-top"><span class="log-coord mono">SECTOR // AVIATION</span></div>
         <div class="log-name">HLA Aviation</div>
-      <div class="viewport portrait">
-        <img src="hla-aviation.jpg" alt="HLA Aviation site screenshot" loading="lazy">
-        <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      <div class="mockup mockup-phone">
+        <div class="phone-shell">
+          <div class="phone-screen">
+            <div class="phone-island"></div>
+            <img src="hla-aviation.jpg" alt="HLA Aviation site screenshot" loading="lazy">
+          </div>
+        </div>
+        <div class="mockup-caption">// MOBILE CAPTURE</div>
       </div>
+
         <p class="log-line">A professional aviation website presenting flight training programs, aviation services and the company's brand.</p>
       </div>
       <div class="log-row">
         <div class="log-top"><span class="log-coord mono">SECTOR // E-COMMERCE / FASHION</span></div>
         <div class="log-name">Riona Official</div>
-      <div class="viewport">
-        <img src="riona.png" alt="Riona Official fashion site desktop screenshot" loading="lazy">
-        <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      <div class="mockup mockup-mac">
+        <div class="mac-shell">
+          <div class="mac-cam"></div>
+          <div class="mac-screen"><img src="riona.png" alt="Riona Official fashion site desktop screenshot" loading="lazy"></div>
+          <div class="mac-base"></div>
+        </div>
+        <div class="mac-shadow"></div>
       </div>
+
         <p class="log-line">An online fashion storefront built for product discovery, browsing and customer purchases.</p>
       </div>
       <div class="log-row">
         <div class="log-top"><span class="log-coord mono">SECTOR // LOGISTICS</span></div>
         <div class="log-name">MA Logistics</div>
-      <div class="viewport">
-        <img src="ma-logistics.png" alt="MA Logistics homepage desktop screenshot" loading="lazy">
-        <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      <div class="mockup mockup-mac">
+        <div class="mac-shell">
+          <div class="mac-cam"></div>
+          <div class="mac-screen"><img src="ma-logistics.png" alt="MA Logistics homepage desktop screenshot" loading="lazy"></div>
+          <div class="mac-base"></div>
+        </div>
+        <div class="mac-shadow"></div>
       </div>
+
         <p class="log-line">A logistics company website with service information and a quotation workflow, so customers can request transport pricing directly.</p>
       </div>
       <div class="log-row">
         <div class="log-top"><span class="log-coord mono">SECTOR // EDUCATION CONSULTANCY</span></div>
         <div class="log-name">Nino Education</div>
-      <div class="viewport">
-        <img src="nino-education.png" alt="Nino Education homepage desktop screenshot" loading="lazy">
-        <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      <div class="mockup mockup-mac">
+        <div class="mac-shell">
+          <div class="mac-cam"></div>
+          <div class="mac-screen"><img src="nino-education.png" alt="Nino Education homepage desktop screenshot" loading="lazy"></div>
+          <div class="mac-base"></div>
+        </div>
+        <div class="mac-shadow"></div>
       </div>
+
         <p class="log-line">An education consultancy platform helping international students explore aviation education, universities, countries and application pathways.</p>
       </div>
       <div class="log-row">
         <div class="log-top"><span class="log-coord mono">SECTOR // TRAVEL & TOURISM</span></div>
         <div class="log-name">Nanis Tours</div>
-      <div class="viewport">
-        <img src="nanis-tours.png" alt="Nanis Tours homepage desktop screenshot" loading="lazy">
-        <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      <div class="mockup mockup-mac">
+        <div class="mac-shell">
+          <div class="mac-cam"></div>
+          <div class="mac-screen"><img src="nanis-tours.png" alt="Nanis Tours homepage desktop screenshot" loading="lazy"></div>
+          <div class="mac-base"></div>
+        </div>
+        <div class="mac-shadow"></div>
       </div>
+
         <p class="log-line">A tourism website showcasing travel experiences, destinations, tours and booking/inquiry journeys.</p>
       </div>
       <div class="log-row">
         <div class="log-top"><span class="log-coord mono">SECTOR // FINTECH / CURRENCY EXCHANGE</span></div>
         <div class="log-name">FlyRate</div>
-      <div class="viewport">
-        <img src="flyrate.png" alt="FlyRate homepage desktop screenshot" loading="lazy">
-        <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      <div class="mockup mockup-mac">
+        <div class="mac-shell">
+          <div class="mac-cam"></div>
+          <div class="mac-screen"><img src="flyrate.png" alt="FlyRate homepage desktop screenshot" loading="lazy"></div>
+          <div class="mac-base"></div>
+        </div>
+        <div class="mac-shadow"></div>
       </div>
+
         <p class="log-line">A digital currency-exchange platform concept built to simplify international money exchange and student transfers between countries.</p>
       </div>
       <div class="log-row">
         <div class="log-top"><span class="log-coord mono">SECTOR // TRAVEL & TOURISM</span></div>
         <div class="log-name">La Perla Tours</div>
-      <div class="viewport">
-        <div class="placeholder"><svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="8" width="32" height="21" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M4 13h32" stroke="currentColor" stroke-width="1.4"/><path d="M15 33h10 M20 29v4" stroke="currentColor" stroke-width="1.4"/></svg>AWAITING SNAPSHOT</div>
-        <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      <div class="mockup mockup-mac">
+        <div class="mac-shell">
+          <div class="mac-cam"></div>
+          <div class="mac-screen"><div class="placeholder"><svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="8" width="32" height="21" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M4 13h32" stroke="currentColor" stroke-width="1.4"/><path d="M15 33h10 M20 29v4" stroke="currentColor" stroke-width="1.4"/></svg>AWAITING SNAPSHOT</div></div>
+          <div class="mac-base"></div>
+        </div>
+        <div class="mac-shadow"></div>
       </div>
+
         <p class="log-line">A travel agency website presenting tours, travel experiences, destinations and customer inquiry/booking journeys.</p>
       </div>
       <div class="log-row">
         <div class="log-top"><span class="log-coord mono">SECTOR // TRAVEL & TOURISM · KSA</span></div>
         <div class="log-name">Al Awamy Tours</div>
-      <div class="viewport">
-        <div class="placeholder"><svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="8" width="32" height="21" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M4 13h32" stroke="currentColor" stroke-width="1.4"/><path d="M15 33h10 M20 29v4" stroke="currentColor" stroke-width="1.4"/></svg>AWAITING SNAPSHOT</div>
-        <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      <div class="mockup mockup-mac">
+        <div class="mac-shell">
+          <div class="mac-cam"></div>
+          <div class="mac-screen"><div class="placeholder"><svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="8" width="32" height="21" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M4 13h32" stroke="currentColor" stroke-width="1.4"/><path d="M15 33h10 M20 29v4" stroke="currentColor" stroke-width="1.4"/></svg>AWAITING SNAPSHOT</div></div>
+          <div class="mac-base"></div>
+        </div>
+        <div class="mac-shadow"></div>
       </div>
+
         <p class="log-line">A Saudi-focused tourism and travel website presenting travel services, tours, destinations and customer inquiries.</p>
       </div>
       <div class="log-row">
         <div class="log-top"><span class="log-coord mono">SECTOR // TRAVEL BOOKING PLATFORM</span></div>
         <div class="log-name">Al Awamy Tours — Booking Platform</div>
-      <div class="viewport">
-        <img src="al-awamy-booking.png" alt="Al Awamy Tours booking platform desktop screenshot" loading="lazy">
-        <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      <div class="mockup mockup-mac">
+        <div class="mac-shell">
+          <div class="mac-cam"></div>
+          <div class="mac-screen"><img src="al-awamy-booking.png" alt="Al Awamy Tours booking platform desktop screenshot" loading="lazy"></div>
+          <div class="mac-base"></div>
+        </div>
+        <div class="mac-shadow"></div>
       </div>
+
         <p class="log-line">A dedicated travel platform for presenting and managing tour offerings, built around a more booking-focused customer journey.</p>
       </div>
       <div class="log-row">
         <div class="log-top"><span class="log-coord mono">SECTOR // MOBILITY · VENTURE STRATEGY</span></div>
         <div class="log-name">WAYQ</div>
-      <div class="viewport">
-        <div class="placeholder"><svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect x="9" y="4" width="22" height="32" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M14 13h12 M14 19h12 M14 25h8" stroke="currentColor" stroke-width="1.4"/></svg>STRATEGY DECK</div>
-        <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      <div class="mockup mockup-mac">
+        <div class="mac-shell">
+          <div class="mac-cam"></div>
+          <div class="mac-screen"><div class="placeholder"><svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect x="9" y="4" width="22" height="32" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M14 13h12 M14 19h12 M14 25h8" stroke="currentColor" stroke-width="1.4"/></svg>STRATEGY DECK</div></div>
+          <div class="mac-base"></div>
+        </div>
+        <div class="mac-shadow"></div>
       </div>
+
         <p class="log-line">Egypt's first premium mobility platform built exclusively for foreigners — full venture strategy, market sizing and a Series Seed investor pitch deck covering a $2.4B addressable market, 15M+ annual tourist arrivals and 9M+ resident expats and students.</p>
       </div>
       <div class="log-row">
         <div class="log-top"><span class="log-coord mono">SECTOR // EDUCATION CONSULTANCY · BRAND</span></div>
         <div class="log-name">Manara Global</div>
-      <div class="viewport">
-        <img src="manara-grid.jpg" alt="Manara Global social content grid" loading="lazy">
-        <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      <div class="mockup mockup-mac">
+        <div class="mac-shell">
+          <div class="mac-cam"></div>
+          <div class="mac-screen"><img src="manara-grid.jpg" alt="Manara Global social content grid" loading="lazy"></div>
+          <div class="mac-base"></div>
+        </div>
+        <div class="mac-shadow"></div>
       </div>
+
         <p class="log-line">Brand and digital presence for an international education consultancy helping students and families with university placement, accommodation, financial arrangements and the wider study journey.</p>
       </div>
       <div class="log-row">
         <div class="log-top"><span class="log-coord mono">SECTOR // RETAIL · PRIVATE</span></div>
         <div class="log-name">Fay Al Duha</div>
-      <div class="viewport">
-        <div class="placeholder"><svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="8" width="32" height="21" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M4 13h32" stroke="currentColor" stroke-width="1.4"/><path d="M15 33h10 M20 29v4" stroke="currentColor" stroke-width="1.4"/></svg>PRIVATE PROJECT</div>
-        <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      <div class="mockup mockup-mac">
+        <div class="mac-shell">
+          <div class="mac-cam"></div>
+          <div class="mac-screen"><div class="placeholder"><svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="8" width="32" height="21" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M4 13h32" stroke="currentColor" stroke-width="1.4"/><path d="M15 33h10 M20 29v4" stroke="currentColor" stroke-width="1.4"/></svg>PRIVATE PROJECT</div></div>
+          <div class="mac-base"></div>
+        </div>
+        <div class="mac-shadow"></div>
       </div>
+
         <p class="log-line">A private booking website for a school-uniform and clothing business in Qatar, letting students and parents browse required items and place orders online.</p>
       </div>
       <div class="log-row">
         <div class="log-top"><span class="log-coord mono">SECTOR // SERVICES · PRIVATE</span></div>
         <div class="log-name">Carmen Laundry</div>
-      <div class="viewport">
-        <div class="placeholder"><svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="8" width="32" height="21" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M4 13h32" stroke="currentColor" stroke-width="1.4"/><path d="M15 33h10 M20 29v4" stroke="currentColor" stroke-width="1.4"/></svg>PRIVATE PROJECT</div>
-        <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      <div class="mockup mockup-mac">
+        <div class="mac-shell">
+          <div class="mac-cam"></div>
+          <div class="mac-screen"><div class="placeholder"><svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="8" width="32" height="21" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M4 13h32" stroke="currentColor" stroke-width="1.4"/><path d="M15 33h10 M20 29v4" stroke="currentColor" stroke-width="1.4"/></svg>PRIVATE PROJECT</div></div>
+          <div class="mac-base"></div>
+        </div>
+        <div class="mac-shadow"></div>
       </div>
+
         <p class="log-line">A laundry booking and management system with customer bookings, order tracking and invoice generation built in.</p>
       </div>
       <div class="log-note mono">// MORE MISSIONS LOGGING SOON</div>
@@ -556,7 +683,7 @@ footer{position:relative;z-index:2;padding:60px 0 50px;border-top:1px solid var(
           </div>
           <input type="hidden" name="_subject" value="New mission briefing from ninotechy.com">
           <input type="hidden" name="_captcha" value="false">
-          <button type="submit" class="cmd cmd-lg" style="background:none;border:none;cursor:pointer;margin-top:10px;">ENGAGE</button>
+          <button type="submit" class="btn-primary lg" style="margin-top:14px;">ENGAGE →</button>
         </form>
       </div>
     </div>
