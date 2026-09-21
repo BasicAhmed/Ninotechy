@@ -344,6 +344,12 @@ section{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction
 .manifesto{display:flex;flex-direction:column;gap:14px;}
 .manifesto .line{font-size:clamp(24px,4.4vw,44px);font-weight:700;font-family:'Space Grotesk';padding:22px 30px;}
 .manifesto .line span{background:linear-gradient(100deg,var(--brand-2),var(--brand));-webkit-background-clip:text;background-clip:text;color:transparent;}
+.typewriter-row{white-space:normal;}
+.tw-prefix{color:var(--white);}
+.tw-target{background:linear-gradient(100deg,var(--brand-2),var(--brand));-webkit-background-clip:text;background-clip:text;color:transparent;}
+.tw-cursor{color:var(--brand-2);margin-left:2px;animation:blink 1s step-end infinite;}
+@keyframes blink{0%,49%{opacity:1;}50%,100%{opacity:0;}}
+@media (prefers-reduced-motion: reduce){.tw-cursor{animation:none;}}
 .alien-note{display:flex;align-items:center;gap:18px;color:var(--dim);font-size:14.5px;margin-top:26px;padding:20px 28px;}
 .alien-svg{width:40px;height:40px;flex-shrink:0;}
 
@@ -978,10 +984,10 @@ footer{position:relative;z-index:2;padding:60px 0 50px;border-top:1px solid var(
   <div class="wrap">
     <span class="tag reveal">WHY WE'RE DIFFERENT</span>
     <div class="manifesto">
-      <div class="line glass reveal">We don't <span>copy templates.</span></div>
-      <div class="line glass reveal">We don't <span>force your idea into a package.</span></div>
-      <div class="line glass reveal">We don't <span>disappear after launch.</span></div>
-      <div class="line glass reveal">We don't <span>stop at the obvious solution.</span></div>
+      <div class="line glass reveal typewriter-row"><span class="tw-prefix">We don't</span> <span class="tw-target" data-full="copy templates."></span><span class="tw-cursor">▍</span></div>
+      <div class="line glass reveal typewriter-row"><span class="tw-prefix">We don't</span> <span class="tw-target" data-full="force your idea into a package."></span><span class="tw-cursor">▍</span></div>
+      <div class="line glass reveal typewriter-row"><span class="tw-prefix">We don't</span> <span class="tw-target" data-full="disappear after launch."></span><span class="tw-cursor">▍</span></div>
+      <div class="line glass reveal typewriter-row"><span class="tw-prefix">We don't</span> <span class="tw-target" data-full="stop at the obvious solution."></span><span class="tw-cursor">▍</span></div>
     </div>
     <div class="alien-note glass reveal">
       <svg class="alien-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -1139,6 +1145,7 @@ footer{position:relative;z-index:2;padding:60px 0 50px;border-top:1px solid var(
     if(!reduced){ stars.rotation.z += 0.00006; }
     planets.forEach(function(p){ p.rotation.y += 0.0015; p.rotation.x += 0.0006; });
     renderer.render(scene, camera);
+    if(window.__updateTypewriters) window.__updateTypewriters();
   }
 
   if (window.WebGLRenderingContext){
@@ -1224,6 +1231,38 @@ footer{position:relative;z-index:2;padding:60px 0 50px;border-top:1px solid var(
     });
   }, {threshold:0.4});
   io.observe(el);
+})();
+
+/* ---------------- scroll-scrubbed typewriter (types on the way down, untypes on the way up) ---------------- */
+(function(){
+  var rows = document.querySelectorAll('.typewriter-row');
+  var items = [];
+  rows.forEach(function(row){
+    var target = row.querySelector('.tw-target');
+    if(!target) return;
+    items.push({row: row, target: target, full: target.getAttribute('data-full') || '', last: -1});
+  });
+  if(!items.length) return;
+
+  function update(){
+    var vh = window.innerHeight;
+    var startY = vh * 0.88;   // typing begins once the row crosses this line
+    var endY = vh * 0.38;     // fully typed once the row reaches this line
+    items.forEach(function(it){
+      var rect = it.row.getBoundingClientRect();
+      var progress = (startY - rect.top) / (startY - endY);
+      progress = Math.max(0, Math.min(1, progress));
+      var count = Math.round(progress * it.full.length);
+      if(count !== it.last){
+        it.target.textContent = it.full.slice(0, count);
+        it.last = count;
+      }
+    });
+  }
+  window.__updateTypewriters = update;
+  window.addEventListener('scroll', update, {passive:true});
+  window.addEventListener('resize', update);
+  update();
 })();
 
 /* ---------------- capabilities manifest toggle ---------------- */
