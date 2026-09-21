@@ -350,6 +350,8 @@ section{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction
 .tw-cursor{color:var(--brand-2);margin-left:2px;animation:blink 1s step-end infinite;}
 @keyframes blink{0%,49%{opacity:1;}50%,100%{opacity:0;}}
 @media (prefers-reduced-motion: reduce){.tw-cursor{animation:none;}}
+.tw-para .tw-live-cursor{color:var(--brand-2);margin-left:1px;animation:blink 1s step-end infinite;}
+.tw-accent{background:linear-gradient(100deg,var(--brand-2),var(--brand));-webkit-background-clip:text;background-clip:text;color:transparent;}
 .alien-note{display:flex;align-items:center;gap:18px;color:var(--dim);font-size:14.5px;margin-top:26px;padding:20px 28px;}
 .alien-svg{width:40px;height:40px;flex-shrink:0;}
 
@@ -493,7 +495,7 @@ footer{position:relative;z-index:2;padding:60px 0 50px;border-top:1px solid var(
     <div class="sec-head reveal">
       <span class="tag">INITIATE LAUNCH SEQUENCE</span>
       <h2>Your mission starts here</h2>
-      <p>Four short steps. We'll reply with the first move within 48 hours.</p>
+      <p class="tw-para">Four short steps. We'll reply with the first move within 48 hours.</p>
     </div>
     <div class="console glass reveal">
       <div class="wizard-progress mono" id="wizardProgress">
@@ -597,11 +599,11 @@ footer{position:relative;z-index:2;padding:60px 0 50px;border-top:1px solid var(
         <div class="lbl mono">MISSIONS FLOWN</div>
       </div>
       <div class="readout mono">
-        <div class="line"><span class="k">STATUS</span><span class="v">Operational</span></div>
-        <div class="line"><span class="k">FOUNDED</span><span class="v">2023</span></div>
-        <div class="line"><span class="k">SECTORS COVERED</span><span class="v">Aviation · Travel · Logistics · Education · Commerce</span></div>
-        <div class="line"><span class="k">OPERATING RANGE</span><span class="v">MENA & beyond</span></div>
-        <div class="line"><span class="k">CURRENT OBJECTIVE</span><span class="v">Your mission, next</span></div>
+        <div class="line"><span class="k">STATUS</span><span class="v tw-para">Operational</span></div>
+        <div class="line"><span class="k">FOUNDED</span><span class="v tw-para">2023</span></div>
+        <div class="line"><span class="k">SECTORS COVERED</span><span class="v tw-para">Aviation · Travel · Logistics · Education · Commerce</span></div>
+        <div class="line"><span class="k">OPERATING RANGE</span><span class="v tw-para">MENA & beyond</span></div>
+        <div class="line"><span class="k">CURRENT OBJECTIVE</span><span class="v tw-para">Your mission, next</span></div>
       </div>
     </div>
   </div>
@@ -612,32 +614,32 @@ footer{position:relative;z-index:2;padding:60px 0 50px;border-top:1px solid var(
     <div class="sec-head reveal">
       <span class="tag">CAPABILITIES ONLINE</span>
       <h2>What this ship can build</h2>
-      <p>No favorite tool. No fixed package. Tap a system to read more.</p>
+      <p class="tw-para">No favorite tool. No fixed package. Tap a system to read more.</p>
     </div>
     <div class="manifest reveal">
       <div class="man-row glass">
         <div class="man-head"><span class="man-idx mono">SYS.01</span><span class="man-name">Websites</span></div>
-        <div class="man-body"><p>From landing pages to complete business platforms — fast, clear, and built to convert.</p></div>
+        <div class="man-body"><p class="tw-para">From landing pages to complete business platforms — fast, clear, and built to convert.</p></div>
       </div>
       <div class="man-row glass">
         <div class="man-head"><span class="man-idx mono">SYS.02</span><span class="man-name">Mobile Apps</span></div>
-        <div class="man-body"><p>iOS, Android, cross-platform and custom experiences, built for how people actually use their phones.</p></div>
+        <div class="man-body"><p class="tw-para">iOS, Android, cross-platform and custom experiences, built for how people actually use their phones.</p></div>
       </div>
       <div class="man-row glass">
         <div class="man-head"><span class="man-idx mono">SYS.03</span><span class="man-name">Custom Builds</span></div>
-        <div class="man-body"><p>If it can be built, we can figure out how. No idea gets rejected for not fitting a package.</p></div>
+        <div class="man-body"><p class="tw-para">If it can be built, we can figure out how. No idea gets rejected for not fitting a package.</p></div>
       </div>
       <div class="man-row glass">
         <div class="man-head"><span class="man-idx mono">SYS.04</span><span class="man-name">AI & Automation</span></div>
-        <div class="man-body"><p>We use AI and automation where it genuinely improves the product — not because it's trending.</p></div>
+        <div class="man-body"><p class="tw-para">We use AI and automation where it genuinely improves the product — not because it's trending.</p></div>
       </div>
       <div class="man-row glass">
         <div class="man-head"><span class="man-idx mono">SYS.05</span><span class="man-name">Integrations & APIs</span></div>
-        <div class="man-body"><p>We connect the systems, platforms and tools you already run, instead of asking you to rebuild your business around ours.</p></div>
+        <div class="man-body"><p class="tw-para">We connect the systems, platforms and tools you already run, instead of asking you to rebuild your business around ours.</p></div>
       </div>
       <div class="man-row glass">
         <div class="man-head"><span class="man-idx mono">SYS.06</span><span class="man-name">Ongoing Support</span></div>
-        <div class="man-body"><p>We don't disappear after launch. We stay close while the system runs in the real world.</p></div>
+        <div class="man-body"><p class="tw-para">We don't disappear after launch. We stay close while the system runs in the real world.</p></div>
       </div>
     </div>
   </div>
@@ -732,7 +734,7 @@ footer{position:relative;z-index:2;padding:60px 0 50px;border-top:1px solid var(
     <div class="sec-head reveal">
       <span class="tag">FLIGHT LOG</span>
       <h2>Missions completed so far</h2>
-      <p>A live record, not a fixed portfolio — desktop snapshots are added as they come in.</p>
+      <p class="tw-para">A live record, not a fixed portfolio — desktop snapshots are added as they come in.</p>
     </div>
     <!-- ADD NEW MISSIONS HERE: duplicate a .log-row block -->
     <div class="flight-log reveal">
@@ -748,7 +750,7 @@ footer{position:relative;z-index:2;padding:60px 0 50px;border-top:1px solid var(
         <div class="mac-shadow"></div>
       </div>
 
-        <p class="log-line">A modern tourism website built around Egypt tours — tour discovery, booking, customer inquiries and tourism content.</p>
+        <p class="log-line tw-para">A modern tourism website built around Egypt tours — tour discovery, booking, customer inquiries and tourism content.</p>
       </div>
       <div class="log-row glass">
         <div class="log-top"><span class="log-coord mono">SECTOR // AVIATION</span></div>
@@ -763,7 +765,7 @@ footer{position:relative;z-index:2;padding:60px 0 50px;border-top:1px solid var(
         <div class="mockup-caption">// MOBILE CAPTURE</div>
       </div>
 
-        <p class="log-line">A professional aviation website presenting flight training programs, aviation services and the company's brand.</p>
+        <p class="log-line tw-para">A professional aviation website presenting flight training programs, aviation services and the company's brand.</p>
       </div>
       <div class="log-row glass">
         <div class="log-top"><span class="log-coord mono">SECTOR // E-COMMERCE / FASHION</span></div>
@@ -777,7 +779,7 @@ footer{position:relative;z-index:2;padding:60px 0 50px;border-top:1px solid var(
         <div class="mac-shadow"></div>
       </div>
 
-        <p class="log-line">An online fashion storefront built for product discovery, browsing and customer purchases.</p>
+        <p class="log-line tw-para">An online fashion storefront built for product discovery, browsing and customer purchases.</p>
       </div>
       <div class="log-row glass">
         <div class="log-top"><span class="log-coord mono">SECTOR // LOGISTICS</span></div>
@@ -791,7 +793,7 @@ footer{position:relative;z-index:2;padding:60px 0 50px;border-top:1px solid var(
         <div class="mac-shadow"></div>
       </div>
 
-        <p class="log-line">A logistics company website with service information and a quotation workflow, so customers can request transport pricing directly.</p>
+        <p class="log-line tw-para">A logistics company website with service information and a quotation workflow, so customers can request transport pricing directly.</p>
       </div>
       <div class="log-row glass">
         <div class="log-top"><span class="log-coord mono">SECTOR // EDUCATION CONSULTANCY</span></div>
@@ -805,7 +807,7 @@ footer{position:relative;z-index:2;padding:60px 0 50px;border-top:1px solid var(
         <div class="mac-shadow"></div>
       </div>
 
-        <p class="log-line">An education consultancy platform helping international students explore aviation education, universities, countries and application pathways.</p>
+        <p class="log-line tw-para">An education consultancy platform helping international students explore aviation education, universities, countries and application pathways.</p>
       </div>
       <div class="log-row glass">
         <div class="log-top"><span class="log-coord mono">SECTOR // TRAVEL & TOURISM</span></div>
@@ -819,7 +821,7 @@ footer{position:relative;z-index:2;padding:60px 0 50px;border-top:1px solid var(
         <div class="mac-shadow"></div>
       </div>
 
-        <p class="log-line">A tourism website showcasing travel experiences, destinations, tours and booking/inquiry journeys.</p>
+        <p class="log-line tw-para">A tourism website showcasing travel experiences, destinations, tours and booking/inquiry journeys.</p>
       </div>
       <div class="log-row glass">
         <div class="log-top"><span class="log-coord mono">SECTOR // FINTECH / CURRENCY EXCHANGE</span></div>
@@ -833,7 +835,7 @@ footer{position:relative;z-index:2;padding:60px 0 50px;border-top:1px solid var(
         <div class="mac-shadow"></div>
       </div>
 
-        <p class="log-line">A digital currency-exchange platform concept built to simplify international money exchange and student transfers between countries.</p>
+        <p class="log-line tw-para">A digital currency-exchange platform concept built to simplify international money exchange and student transfers between countries.</p>
       </div>
       <div class="log-row glass">
         <div class="log-top"><span class="log-coord mono">SECTOR // TRAVEL & TOURISM</span></div>
@@ -847,7 +849,7 @@ footer{position:relative;z-index:2;padding:60px 0 50px;border-top:1px solid var(
         <div class="mac-shadow"></div>
       </div>
 
-        <p class="log-line">A travel agency website presenting tours, travel experiences, destinations and customer inquiry/booking journeys.</p>
+        <p class="log-line tw-para">A travel agency website presenting tours, travel experiences, destinations and customer inquiry/booking journeys.</p>
       </div>
       <div class="log-row glass">
         <div class="log-top"><span class="log-coord mono">SECTOR // TRAVEL & TOURISM · KSA</span></div>
@@ -861,7 +863,7 @@ footer{position:relative;z-index:2;padding:60px 0 50px;border-top:1px solid var(
         <div class="mac-shadow"></div>
       </div>
 
-        <p class="log-line">A Saudi-focused tourism and travel website presenting travel services, tours, destinations and customer inquiries.</p>
+        <p class="log-line tw-para">A Saudi-focused tourism and travel website presenting travel services, tours, destinations and customer inquiries.</p>
       </div>
       <div class="log-row glass">
         <div class="log-top"><span class="log-coord mono">SECTOR // TRAVEL BOOKING PLATFORM</span></div>
@@ -875,7 +877,7 @@ footer{position:relative;z-index:2;padding:60px 0 50px;border-top:1px solid var(
         <div class="mac-shadow"></div>
       </div>
 
-        <p class="log-line">A dedicated travel platform for presenting and managing tour offerings, built around a more booking-focused customer journey.</p>
+        <p class="log-line tw-para">A dedicated travel platform for presenting and managing tour offerings, built around a more booking-focused customer journey.</p>
       </div>
       <div class="log-row glass">
         <div class="log-top"><span class="log-coord mono">SECTOR // MOBILITY · VENTURE STRATEGY</span></div>
@@ -889,7 +891,7 @@ footer{position:relative;z-index:2;padding:60px 0 50px;border-top:1px solid var(
         <div class="mac-shadow"></div>
       </div>
 
-        <p class="log-line">Egypt's first premium mobility platform built exclusively for foreigners — full venture strategy, market sizing and a Series Seed investor pitch deck covering a $2.4B addressable market, 15M+ annual tourist arrivals and 9M+ resident expats and students.</p>
+        <p class="log-line tw-para">Egypt's first premium mobility platform built exclusively for foreigners — full venture strategy, market sizing and a Series Seed investor pitch deck covering a $2.4B addressable market, 15M+ annual tourist arrivals and 9M+ resident expats and students.</p>
       </div>
       <div class="log-row glass">
         <div class="log-top"><span class="log-coord mono">SECTOR // EDUCATION CONSULTANCY · BRAND</span></div>
@@ -903,7 +905,7 @@ footer{position:relative;z-index:2;padding:60px 0 50px;border-top:1px solid var(
         <div class="mac-shadow"></div>
       </div>
 
-        <p class="log-line">Brand and digital presence for an international education consultancy helping students and families with university placement, accommodation, financial arrangements and the wider study journey.</p>
+        <p class="log-line tw-para">Brand and digital presence for an international education consultancy helping students and families with university placement, accommodation, financial arrangements and the wider study journey.</p>
       </div>
       <div class="log-row glass">
         <div class="log-top"><span class="log-coord mono">SECTOR // RETAIL · PRIVATE</span></div>
@@ -917,7 +919,7 @@ footer{position:relative;z-index:2;padding:60px 0 50px;border-top:1px solid var(
         <div class="mac-shadow"></div>
       </div>
 
-        <p class="log-line">A private booking website for a school-uniform and clothing business in Qatar, letting students and parents browse required items and place orders online.</p>
+        <p class="log-line tw-para">A private booking website for a school-uniform and clothing business in Qatar, letting students and parents browse required items and place orders online.</p>
       </div>
       <div class="log-row glass">
         <div class="log-top"><span class="log-coord mono">SECTOR // SERVICES · PRIVATE</span></div>
@@ -931,7 +933,7 @@ footer{position:relative;z-index:2;padding:60px 0 50px;border-top:1px solid var(
         <div class="mac-shadow"></div>
       </div>
 
-        <p class="log-line">A laundry booking and management system with customer bookings, order tracking and invoice generation built in.</p>
+        <p class="log-line tw-para">A laundry booking and management system with customer bookings, order tracking and invoice generation built in.</p>
       </div>
       <div class="log-note mono">// MORE MISSIONS LOGGING SOON</div>
     </div>
@@ -943,37 +945,37 @@ footer{position:relative;z-index:2;padding:60px 0 50px;border-top:1px solid var(
     <div class="sec-head reveal">
       <span class="tag">FIELD NOTES</span>
       <h2>Guides worth reading before you build</h2>
-      <p>Straight answers to the questions we get asked before every mission starts.</p>
+      <p class="tw-para">Straight answers to the questions we get asked before every mission starts.</p>
     </div>
     <div class="guides-grid">
       <a href="/guides/build-professional-website-2026.html" class="guide-card glass reveal">
         <span class="gc-num mono">01</span>
-        <h3>How to Build a Professional Website for Your Business in 2026</h3>
+        <h3 class="tw-para">How to Build a Professional Website for Your Business in 2026</h3>
         <span class="gc-link mono">READ →</span>
       </a>
       <a href="/guides/website-cost-qatar-uae-saudi-malaysia.html" class="guide-card glass reveal">
         <span class="gc-num mono">02</span>
-        <h3>How Much Does a Website Cost in Qatar, UAE, Saudi Arabia & Malaysia?</h3>
+        <h3 class="tw-para">How Much Does a Website Cost in Qatar, UAE, Saudi Arabia & Malaysia?</h3>
         <span class="gc-link mono">READ →</span>
       </a>
       <a href="/guides/website-vs-mobile-app.html" class="guide-card glass reveal">
         <span class="gc-num mono">03</span>
-        <h3>Website vs Mobile App: Which One Does Your Business Need?</h3>
+        <h3 class="tw-para">Website vs Mobile App: Which One Does Your Business Need?</h3>
         <span class="gc-link mono">READ →</span>
       </a>
       <a href="/guides/signs-website-needs-redesign.html" class="guide-card glass reveal">
         <span class="gc-num mono">04</span>
-        <h3>10 Signs Your Business Website Needs a Redesign</h3>
+        <h3 class="tw-para">10 Signs Your Business Website Needs a Redesign</h3>
         <span class="gc-link mono">READ →</span>
       </a>
       <a href="/guides/choose-web-development-company.html" class="guide-card glass reveal">
         <span class="gc-num mono">05</span>
-        <h3>How to Choose the Right Web Development Company for Your Business</h3>
+        <h3 class="tw-para">How to Choose the Right Web Development Company for Your Business</h3>
         <span class="gc-link mono">READ →</span>
       </a>
       <a href="/guides/website-more-customers.html" class="guide-card glass reveal">
         <span class="gc-num mono">06</span>
-        <h3>How a Professional Website Can Help Your Business Get More Customers</h3>
+        <h3 class="tw-para">How a Professional Website Can Help Your Business Get More Customers</h3>
         <span class="gc-link mono">READ →</span>
       </a>
     </div>
@@ -996,7 +998,7 @@ footer{position:relative;z-index:2;padding:60px 0 50px;border-top:1px solid var(
         <ellipse cx="37" cy="24" rx="4.5" ry="6" fill="#cf4519" opacity=".85"/>
         <path d="M18 44 Q30 52 42 44" stroke="#cf4519" stroke-width="1.4" fill="none" opacity=".6"/>
       </svg>
-      <span>Someone's always watching the build. We build around the mission — not around a template.</span>
+      <span class="tw-para">Someone's always watching the build. We build around the mission — not around a template.</span>
     </div>
   </div>
 </section>
@@ -1010,7 +1012,7 @@ footer{position:relative;z-index:2;padding:60px 0 50px;border-top:1px solid var(
     <div class="foot-icon">
       <svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg"><path fill="rgba(244,242,238,.7)" d="M642,465.96v-69.92c0-26.51-21.49-47.99-47.99-47.99h-71.26c-10.62,0-20.44,3.47-28.4,9.33-5.92-5.86-14.49-9.4-22.9-9.34-8.73,0-16.93,3.4-23.12,9.58l-22.55,22.55c-16.86,3.09-32.33,11.81-44.18,24.42-28.17,28.16-31.51,71.91-7.97,104,0,0,10.1,13.8,10.1,13.8h21.35c-10.84,17.35-7.86,41.15,8.16,55.15-27.26,25.71-9.83,72.76,27.94,74.38,11.58.51,22.45-3.49,30.67-10.81,0,0,97.36,0,97.36,0,12.82,0,24.87-4.99,33.94-14.06l22.98-22.98c9.06-9.06,14.06-21.12,14.06-33.93v-34.15c-.05-15.77-6.85-27.75-18.31-38.18,12.28-5.83,20.13-18.14,20.13-31.85Z"/><path fill="#cf4519" d="M573.84,409.55c-7.61-7.61-19.95-7.61-27.56,0-7.61,7.61-7.61,19.95,0,27.56,5.42,5.42,13.23,6.97,20.03,4.68l32.3,32.3c3.3,3.3,8.23,4.28,12.54,2.5,4.32-1.79,7.11-5.96,7.11-10.63v-69.92c0-13.37-10.88-24.24-24.24-24.24h-71.26c-13.37,0-24.24,10.88-24.24,24.24v26.38c0,6.48,2.52,12.56,7.1,17.14l91.51,91.51c1.32,1.32,2.04,3.07,2.04,4.92v34.15c0,1.86-.72,3.61-2.04,4.92l-22.98,22.98c-1.32,1.32-3.06,2.04-4.92,2.04h-60.63c-1.86,0-3.61-.72-4.92-2.04l-15.09-15.09c-2.72-2.72-2.72-7.13,0-9.85l32.88-32.88c6.8,2.29,14.61.74,20.03-4.68,7.61-7.61,7.61-19.95,0-27.56-7.61-7.61-19.95-7.61-27.56,0-5.42,5.42-6.97,13.23-4.68,20.03l-32.88,32.88c-9.45,9.45-9.45,24.83,0,34.29l4.91,4.91h-20.63c-3.19-6.43-9.81-10.85-17.47-10.85-10.76,0-19.49,8.73-19.49,19.49s8.73,19.49,19.49,19.49c7.66,0,14.28-4.42,17.47-10.85h108.59c6.47,0,12.56-2.52,17.14-7.1l22.98-22.98c4.58-4.58,7.1-10.67,7.1-17.14v-34.15c0-6.47-2.52-12.56-7.1-17.14l-91.51-91.51c-1.31-1.32-2.04-3.06-2.04-4.92v-26.38c0-3.84,3.12-6.96,6.96-6.96h71.26c3.84,0,6.96,3.12,6.96,6.96v55.99l-22.45-22.45c2.29-6.8.73-14.61-4.68-20.03Z"/><path fill="#cf4519" d="M448.11,526.67c-6.8-2.29-14.61-.73-20.03,4.68-7.61,7.61-7.61,19.95,0,27.56,7.61,7.61,19.95,7.61,27.56,0,5.42-5.42,6.97-13.23,4.68-20.03l6-6c4.58-4.58,7.1-10.67,7.1-17.14s-2.52-12.56-7.1-17.14l-17.24-17.24h-44.35c-9.25-15.31-7.01-34.88,5.87-47.76l2.32-2.32c7.38-7.38,17.19-11.45,27.63-11.45h3.58l18.87-18.87-.18,31.48c-6.45,3.15-10.91,9.75-10.95,17.41-.06,10.76,8.61,19.54,19.38,19.6,10.76.06,19.54-8.61,19.6-19.38.05-7.66-4.34-14.31-10.75-17.53l.3-51.79c0-3.64-2.17-6.88-5.53-8.28-3.36-1.39-7.19-.63-9.76,1.94l-28.25,28.25c-13.66.88-26.38,6.62-36.15,16.39l-2.32,2.32c-19.82,19.81-22.17,50.6-5.59,73.18l2.98,4.07h46.15l12.18,12.18c1.31,1.32,2.04,3.06,2.04,4.92s-.72,3.61-2.04,4.92l-6,6Z"/></svg>
     </div>
-    <span>Nino Techy isn't another agency on Earth.</span>
+    <span class="tw-para">Nino Techy isn't another agency on Earth.</span>
     <span><a href="tel:+97451131080">+974 5113 1080</a> · <a href="https://ninotechy.com">ninotechy.com</a></span>
     <span class="mono">© 2026</span>
   </div>
@@ -1260,6 +1262,77 @@ footer{position:relative;z-index:2;padding:60px 0 50px;border-top:1px solid var(
     });
   }
   window.__updateTypewriters = update;
+  window.addEventListener('scroll', update, {passive:true});
+  window.addEventListener('resize', update);
+  update();
+})();
+
+/* ---------------- generic scroll-scrubbed typewriter for paragraphs/titles/values site-wide ---------------- */
+(function(){
+  var els = document.querySelectorAll('.tw-para');
+  if(!els.length) return;
+
+  function escapeHtml(s){
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  var items = [];
+  els.forEach(function(el){
+    var runs = [];
+    var total = 0;
+    Array.prototype.forEach.call(el.childNodes, function(node){
+      if(node.nodeType === 3){ // text node
+        runs.push({tag:null, text: node.textContent});
+        total += node.textContent.length;
+      } else if(node.nodeType === 1){ // element node (e.g. <b>)
+        var t = node.textContent;
+        runs.push({tag: node.tagName.toLowerCase(), text: t});
+        total += t.length;
+      }
+    });
+    if(!total) return;
+    items.push({el: el, runs: runs, total: total, last: -1});
+  });
+  if(!items.length) return;
+
+  function render(runs, count){
+    var out = '';
+    var remaining = count;
+    for(var i=0;i<runs.length;i++){
+      var r = runs[i];
+      if(remaining <= 0) break;
+      var take = Math.min(remaining, r.text.length);
+      var piece = escapeHtml(r.text.slice(0, take));
+      out += r.tag ? ('<'+r.tag+'>'+piece+'</'+r.tag+'>') : piece;
+      remaining -= take;
+    }
+    return out;
+  }
+
+  function update(){
+    var vh = window.innerHeight;
+    var startY = vh * 0.92;
+    var endY = vh * 0.55;
+    items.forEach(function(it){
+      var rect = it.el.getBoundingClientRect();
+      var progress = (startY - rect.top) / (startY - endY);
+      progress = Math.max(0, Math.min(1, progress));
+      var count = Math.round(progress * it.total);
+      if(count === it.last) return;
+      it.last = count;
+      var html = render(it.runs, count);
+      if(count > 0 && count < it.total){
+        html += '<span class="tw-live-cursor">▍</span>';
+      }
+      it.el.innerHTML = html;
+    });
+  }
+
+  var prevUpdate = window.__updateTypewriters;
+  window.__updateTypewriters = function(){
+    if(prevUpdate) prevUpdate();
+    update();
+  };
   window.addEventListener('scroll', update, {passive:true});
   window.addEventListener('resize', update);
   update();
