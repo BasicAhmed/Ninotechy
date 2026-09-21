@@ -716,8 +716,12 @@ footer{position:relative;z-index:2;padding:60px 0 50px;border-top:1px solid var(
     entries.forEach(function(en){
       if(en.isIntersecting){ en.target.classList.add('in'); io2.unobserve(en.target); }
     });
-  }, {threshold:0.15});
+  }, {threshold:0, rootMargin:'0px 0px -5% 0px'});
   reveals.forEach(function(e){ io2.observe(e); });
+  /* safety net: force-reveal anything still hidden after 4s, in case of any edge-case miss */
+  setTimeout(function(){
+    reveals.forEach(function(e){ e.classList.add('in'); });
+  }, 4000);
 })();
 
 /* ---------------- glow cursor ---------------- */
