@@ -424,13 +424,13 @@ footer{position:relative;z-index:2;padding:60px 0 50px;border-top:1px solid var(
 
 <div class="hud">
   <div class="hud-item active" data-target="launch"><span>LAUNCH</span><div class="hud-dot"></div></div>
+  <div class="hud-item" data-target="briefing"><span>START YOURS</span><div class="hud-dot"></div></div>
   <div class="hud-item" data-target="control"><span>MISSION CONTROL</span><div class="hud-dot"></div></div>
   <div class="hud-item" data-target="capabilities"><span>CAPABILITIES</span><div class="hud-dot"></div></div>
   <div class="hud-item" data-target="tools"><span>TOOLS</span><div class="hud-dot"></div></div>
   <div class="hud-item" data-target="missions"><span>MISSIONS</span><div class="hud-dot"></div></div>
   <div class="hud-item" data-target="guides"><span>GUIDES</span><div class="hud-dot"></div></div>
   <div class="hud-item" data-target="future"><span>THE FUTURE</span><div class="hud-dot"></div></div>
-  <div class="hud-item" data-target="briefing"><span>START YOURS</span><div class="hud-dot"></div></div>
 </div>
 
 <div class="rail"><div class="rail-fill" id="railFill"></div></div>
@@ -482,7 +482,108 @@ footer{position:relative;z-index:2;padding:60px 0 50px;border-top:1px solid var(
   </div>
 </section>
 
-<section id="control" data-stage="02 · MISSION CONTROL">
+<section id="briefing" data-stage="02 · START YOUR MISSION">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="tag">INITIATE LAUNCH SEQUENCE</span>
+      <h2>Your mission starts here</h2>
+      <p>Four short steps. We'll reply with the first move within 48 hours.</p>
+    </div>
+    <div class="console glass reveal">
+      <div class="wizard-progress mono" id="wizardProgress">
+        <div class="wp-step active" data-step="1"><span class="wp-dot"></span>YOU</div>
+        <div class="wp-line"></div>
+        <div class="wp-step" data-step="2"><span class="wp-dot"></span>MISSION</div>
+        <div class="wp-line"></div>
+        <div class="wp-step" data-step="3"><span class="wp-dot"></span>SCOPE</div>
+        <div class="wp-line"></div>
+        <div class="wp-step" data-step="4"><span class="wp-dot"></span>REVIEW</div>
+      </div>
+
+      <form id="briefForm" novalidate>
+        <!-- STEP 1 — ABOUT YOU -->
+        <div class="wizard-step active" data-step="1">
+          <div class="field-row">
+            <div class="field"><label for="name">NAME *</label><input id="name" name="name" type="text" required></div>
+            <div class="field"><label for="email">EMAIL *</label><input id="email" name="email" type="email" required></div>
+          </div>
+          <div class="field-row">
+            <div class="field"><label for="phone">PHONE / WHATSAPP</label><input id="phone" name="phone" type="tel" placeholder="+974 ..."></div>
+            <div class="field"><label for="company">COMPANY</label><input id="company" name="company" type="text"></div>
+          </div>
+          <div class="field">
+            <label for="contactPref">PREFERRED CONTACT METHOD</label>
+            <select id="contactPref" name="contactPref"><option>Email</option><option>WhatsApp</option><option>Call</option></select>
+          </div>
+        </div>
+
+        <!-- STEP 2 — THE MISSION -->
+        <div class="wizard-step" data-step="2">
+          <div class="field-row">
+            <div class="field">
+              <label for="type">MISSION TYPE *</label>
+              <select id="type" name="projectType" required>
+                <option value="">Select one</option>
+                <option>Website</option><option>Mobile App</option><option>Custom Build</option><option>AI & Automation</option><option>Not sure yet</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="industry">INDUSTRY / SECTOR</label>
+              <select id="industry" name="industry">
+                <option value="">Select one</option>
+                <option>Aviation</option><option>Travel & Tourism</option><option>Logistics</option><option>Education</option><option>E-commerce / Retail</option><option>Fintech</option><option>Hospitality</option><option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="field"><label for="desc">MISSION DESCRIPTION *</label><textarea id="desc" name="description" rows="4" required placeholder="What are you building, and what problem does it solve?"></textarea></div>
+        </div>
+
+        <!-- STEP 3 — SCOPE & TIMELINE -->
+        <div class="wizard-step" data-step="3">
+          <div class="field-row">
+            <div class="field">
+              <label for="budget">FUEL BUDGET</label>
+              <select id="budget" name="budget"><option>Under $2,000</option><option>$2,000–$5,000</option><option>$5,000–$15,000</option><option>$15,000+</option></select>
+            </div>
+            <div class="field">
+              <label for="timeline">LAUNCH WINDOW</label>
+              <select id="timeline" name="timeline"><option>ASAP</option><option>Within a month</option><option>1–3 months</option><option>Just exploring</option></select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="assets">DO YOU HAVE EXISTING BRAND ASSETS?</label>
+            <select id="assets" name="assets"><option>No — starting from scratch</option><option>Some — logo/colors only</option><option>Yes — full brand guidelines</option></select>
+          </div>
+          <div class="field"><label for="references">REFERENCE SITES OR INSPIRATION</label><input id="references" name="references" type="text" placeholder="Links or names of things you like"></div>
+          <div class="field">
+            <label for="heard">HOW DID YOU HEAR ABOUT US?</label>
+            <select id="heard" name="heard"><option>Instagram</option><option>WhatsApp / referral</option><option>Google search</option><option>Existing client</option><option>Other</option></select>
+          </div>
+        </div>
+
+        <!-- STEP 4 — REVIEW -->
+        <div class="wizard-step" data-step="4">
+          <div class="review-box mono" id="reviewBox"></div>
+        </div>
+
+        <div class="wizard-nav">
+          <button type="button" class="btn-secondary" id="wizBack" hidden>← Back</button>
+          <button type="button" class="btn-primary" id="wizNext">Next →</button>
+          <button type="submit" class="btn-primary" id="engageBtn" hidden>ENGAGE →</button>
+        </div>
+      </form>
+
+      <div class="thankyou" id="thankyou" hidden>
+        <div class="thankyou-icon"><svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M12 20l5.5 5.5L28 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="thankyou-title mono">TRANSMISSION RECEIVED</div>
+        <h3 id="thankyouName">Thanks — mission logged.</h3>
+        <p>We read every briefing personally. Expect a reply within 48 hours with the first step. A confirmation is on its way to your inbox.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="control" data-stage="03 · MISSION CONTROL">
   <div class="wrap">
     <div class="control-grid glass control-panel reveal">
       <div class="big-num">
@@ -500,7 +601,7 @@ footer{position:relative;z-index:2;padding:60px 0 50px;border-top:1px solid var(
   </div>
 </section>
 
-<section id="capabilities" data-stage="03 · CAPABILITIES">
+<section id="capabilities" data-stage="04 · CAPABILITIES">
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="tag">CAPABILITIES ONLINE</span>
@@ -536,7 +637,7 @@ footer{position:relative;z-index:2;padding:60px 0 50px;border-top:1px solid var(
   </div>
 </section>
 
-<section id="tools" data-stage="04 · TOOLS">
+<section id="tools" data-stage="05 · TOOLS">
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="tag">TOOLS WE USE</span>
@@ -620,7 +721,7 @@ footer{position:relative;z-index:2;padding:60px 0 50px;border-top:1px solid var(
   </div>
 </section>
 
-<section id="missions" data-stage="05 · MISSIONS">
+<section id="missions" data-stage="06 · MISSIONS">
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="tag">FLIGHT LOG</span>
@@ -831,7 +932,7 @@ footer{position:relative;z-index:2;padding:60px 0 50px;border-top:1px solid var(
   </div>
 </section>
 
-<section id="guides" data-stage="06 · GUIDES">
+<section id="guides" data-stage="07 · GUIDES">
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="tag">FIELD NOTES</span>
@@ -873,7 +974,7 @@ footer{position:relative;z-index:2;padding:60px 0 50px;border-top:1px solid var(
   </div>
 </section>
 
-<section id="future" data-stage="07 · THE FUTURE">
+<section id="future" data-stage="08 · THE FUTURE">
   <div class="wrap">
     <span class="tag reveal">WHY WE'RE DIFFERENT</span>
     <div class="manifesto">
@@ -894,106 +995,7 @@ footer{position:relative;z-index:2;padding:60px 0 50px;border-top:1px solid var(
   </div>
 </section>
 
-<section id="briefing" data-stage="08 · START YOUR MISSION">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="tag">INITIATE LAUNCH SEQUENCE</span>
-      <h2>Your mission starts here</h2>
-      <p>Four short steps. We'll reply with the first move within 48 hours.</p>
-    </div>
-    <div class="console glass reveal">
-      <div class="wizard-progress mono" id="wizardProgress">
-        <div class="wp-step active" data-step="1"><span class="wp-dot"></span>YOU</div>
-        <div class="wp-line"></div>
-        <div class="wp-step" data-step="2"><span class="wp-dot"></span>MISSION</div>
-        <div class="wp-line"></div>
-        <div class="wp-step" data-step="3"><span class="wp-dot"></span>SCOPE</div>
-        <div class="wp-line"></div>
-        <div class="wp-step" data-step="4"><span class="wp-dot"></span>REVIEW</div>
-      </div>
 
-      <form id="briefForm" novalidate>
-        <!-- STEP 1 — ABOUT YOU -->
-        <div class="wizard-step active" data-step="1">
-          <div class="field-row">
-            <div class="field"><label for="name">NAME *</label><input id="name" name="name" type="text" required></div>
-            <div class="field"><label for="email">EMAIL *</label><input id="email" name="email" type="email" required></div>
-          </div>
-          <div class="field-row">
-            <div class="field"><label for="phone">PHONE / WHATSAPP</label><input id="phone" name="phone" type="tel" placeholder="+974 ..."></div>
-            <div class="field"><label for="company">COMPANY</label><input id="company" name="company" type="text"></div>
-          </div>
-          <div class="field">
-            <label for="contactPref">PREFERRED CONTACT METHOD</label>
-            <select id="contactPref" name="contactPref"><option>Email</option><option>WhatsApp</option><option>Call</option></select>
-          </div>
-        </div>
-
-        <!-- STEP 2 — THE MISSION -->
-        <div class="wizard-step" data-step="2">
-          <div class="field-row">
-            <div class="field">
-              <label for="type">MISSION TYPE *</label>
-              <select id="type" name="projectType" required>
-                <option value="">Select one</option>
-                <option>Website</option><option>Mobile App</option><option>Custom Build</option><option>AI & Automation</option><option>Not sure yet</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="industry">INDUSTRY / SECTOR</label>
-              <select id="industry" name="industry">
-                <option value="">Select one</option>
-                <option>Aviation</option><option>Travel & Tourism</option><option>Logistics</option><option>Education</option><option>E-commerce / Retail</option><option>Fintech</option><option>Hospitality</option><option>Other</option>
-              </select>
-            </div>
-          </div>
-          <div class="field"><label for="desc">MISSION DESCRIPTION *</label><textarea id="desc" name="description" rows="4" required placeholder="What are you building, and what problem does it solve?"></textarea></div>
-        </div>
-
-        <!-- STEP 3 — SCOPE & TIMELINE -->
-        <div class="wizard-step" data-step="3">
-          <div class="field-row">
-            <div class="field">
-              <label for="budget">FUEL BUDGET</label>
-              <select id="budget" name="budget"><option>Under $2,000</option><option>$2,000–$5,000</option><option>$5,000–$15,000</option><option>$15,000+</option></select>
-            </div>
-            <div class="field">
-              <label for="timeline">LAUNCH WINDOW</label>
-              <select id="timeline" name="timeline"><option>ASAP</option><option>Within a month</option><option>1–3 months</option><option>Just exploring</option></select>
-            </div>
-          </div>
-          <div class="field">
-            <label for="assets">DO YOU HAVE EXISTING BRAND ASSETS?</label>
-            <select id="assets" name="assets"><option>No — starting from scratch</option><option>Some — logo/colors only</option><option>Yes — full brand guidelines</option></select>
-          </div>
-          <div class="field"><label for="references">REFERENCE SITES OR INSPIRATION</label><input id="references" name="references" type="text" placeholder="Links or names of things you like"></div>
-          <div class="field">
-            <label for="heard">HOW DID YOU HEAR ABOUT US?</label>
-            <select id="heard" name="heard"><option>Instagram</option><option>WhatsApp / referral</option><option>Google search</option><option>Existing client</option><option>Other</option></select>
-          </div>
-        </div>
-
-        <!-- STEP 4 — REVIEW -->
-        <div class="wizard-step" data-step="4">
-          <div class="review-box mono" id="reviewBox"></div>
-        </div>
-
-        <div class="wizard-nav">
-          <button type="button" class="btn-secondary" id="wizBack" hidden>← Back</button>
-          <button type="button" class="btn-primary" id="wizNext">Next →</button>
-          <button type="submit" class="btn-primary" id="engageBtn" hidden>ENGAGE →</button>
-        </div>
-      </form>
-
-      <div class="thankyou" id="thankyou" hidden>
-        <div class="thankyou-icon"><svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M12 20l5.5 5.5L28 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <div class="thankyou-title mono">TRANSMISSION RECEIVED</div>
-        <h3 id="thankyouName">Thanks — mission logged.</h3>
-        <p>We read every briefing personally. Expect a reply within 48 hours with the first step. A confirmation is on its way to your inbox.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
 </main>
 
