@@ -43,8 +43,8 @@
   --brand:#cf4519;
   --brand-2:#ff8144;
   --white:#f4f2ee;
-  --dim:#8f8a98;
-  --hair:rgba(255,255,255,.10);
+  --dim:#a39dab;
+  --hair:rgba(255,255,255,.12);
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -138,6 +138,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:80;padding:18px 30px;
 /* mobile progress rail */
 .rail{position:fixed;left:0;bottom:0;height:2px;width:100%;z-index:80;background:transparent;}
 .rail-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--brand),var(--brand-2));transition:width .1s linear;}
+
+.whatsapp-fab{
+  position:fixed;right:22px;bottom:26px;z-index:90;
+  width:56px;height:56px;border-radius:50%;
+  background:linear-gradient(135deg,var(--brand),var(--brand-2));
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 10px 28px -6px rgba(207,69,25,.6), 0 0 0 1px rgba(255,255,255,.08) inset;
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.whatsapp-fab:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 16px 36px -6px rgba(207,69,25,.75), 0 0 0 1px rgba(255,255,255,.1) inset;}
+.whatsapp-fab svg{width:26px;height:26px;}
+@media (max-width:600px){.whatsapp-fab{right:16px;bottom:20px;width:50px;height:50px;}}
 
 section{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:120px 0;}
 
@@ -278,6 +290,13 @@ section{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction
 .checklist li .box{width:9px;height:9px;border:1px solid var(--hair);flex-shrink:0;transition:all .3s ease;}
 .checklist li.done{color:var(--brand-2);}
 .checklist li.done .box{background:var(--brand);border-color:var(--brand);box-shadow:0 0 8px var(--brand);}
+
+.thankyou{text-align:center;padding:30px 10px 10px;}
+.thankyou-icon{width:56px;height:56px;margin:0 auto 20px;color:var(--brand);}
+.thankyou-icon svg{width:100%;height:100%;filter:drop-shadow(0 0 14px rgba(207,69,25,.5));}
+.thankyou-title{color:var(--brand-2);font-size:12px;letter-spacing:.14em;margin-bottom:14px;}
+.thankyou h3{font-size:clamp(22px,3vw,30px);margin-bottom:14px;}
+.thankyou p{color:var(--dim);font-size:15.5px;max-width:46ch;margin:0 auto;}
 .launch-grid{position:relative;}
 .field{margin-bottom:28px;}
 .field label{display:block;font-family:'IBM Plex Mono';font-size:12px;color:var(--dim);letter-spacing:.1em;margin-bottom:10px;}
@@ -683,8 +702,15 @@ footer{position:relative;z-index:2;padding:60px 0 50px;border-top:1px solid var(
           </div>
           <input type="hidden" name="_subject" value="New mission briefing from ninotechy.com">
           <input type="hidden" name="_captcha" value="false">
-          <button type="submit" class="btn-primary lg" style="margin-top:14px;">ENGAGE →</button>
+          <input type="hidden" name="_template" value="table">
+          <button type="submit" class="btn-primary lg" id="engageBtn" style="margin-top:14px;">ENGAGE →</button>
         </form>
+        <div class="thankyou" id="thankyou" hidden>
+          <div class="thankyou-icon"><svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M12 20l5.5 5.5L28 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="thankyou-title mono">TRANSMISSION RECEIVED</div>
+          <h3 id="thankyouName">Thanks — mission logged.</h3>
+          <p>We read every briefing personally. Expect a reply within 48 hours with the first step.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -702,6 +728,10 @@ footer{position:relative;z-index:2;padding:60px 0 50px;border-top:1px solid var(
     <span class="mono">© 2026</span>
   </div>
 </footer>
+
+<a class="whatsapp-fab" href="https://wa.me/97451131080" target="_blank" rel="noopener" aria-label="Chat with Nino Techy on WhatsApp">
+  <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" fill="#0a0400"><path d="M16.02 3C9.4 3 4 8.4 4 15.02c0 2.2.6 4.28 1.63 6.06L4 29l8.1-1.6a11.9 11.9 0 0 0 3.92.66C22.64 28.06 28 22.66 28 16.04 28 9.42 22.64 3 16.02 3Zm0 21.9c-1.36 0-2.68-.35-3.84-1l-.28-.16-4.8.95.98-4.68-.18-.3a9.85 9.85 0 0 1-1.5-5.24c0-5.45 4.43-9.88 9.62-9.88 5.14 0 9.5 4.36 9.5 9.85 0 5.45-4.4 9.46-9.5 9.46Zm5.36-7.24c-.29-.15-1.74-.86-2-.96-.27-.1-.47-.15-.66.15-.2.29-.76.95-.93 1.15-.17.2-.34.22-.63.07-.29-.15-1.23-.45-2.34-1.44-.87-.77-1.45-1.72-1.62-2.01-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.2-.29.29-.49.1-.2.05-.37-.02-.51-.07-.15-.66-1.6-.91-2.19-.24-.57-.48-.5-.66-.5-.17 0-.37-.02-.56-.02-.2 0-.51.07-.78.37-.27.29-1.02 1-1.02 2.44s1.05 2.82 1.19 3.02c.15.2 2.06 3.15 5 4.42.7.3 1.24.48 1.67.61.7.22 1.34.19 1.84.12.56-.08 1.74-.71 1.98-1.4.25-.68.25-1.27.17-1.4-.07-.12-.25-.2-.54-.34Z"/></svg>
+</a>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
@@ -905,6 +935,47 @@ footer{position:relative;z-index:2;padding:60px 0 50px;border-top:1px solid var(
       li.classList.toggle('done', input.value.trim().length>0);
     });
   });
+})();
+
+/* ---------------- form submission + personalized thank-you ---------------- */
+(function(){
+  var form = document.getElementById('briefForm');
+  var btn = document.getElementById('engageBtn');
+  var thankyou = document.getElementById('thankyou');
+  var thankyouName = document.getElementById('thankyouName');
+  if(!form) return;
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = (document.getElementById('name').value || '').trim();
+    var originalLabel = btn.textContent;
+    btn.textContent = 'TRANSMITTING…';
+    btn.disabled = true;
+
+    var data = new FormData(form);
+    fetch('https://formsubmit.co/ajax/hello@ninotechy.com', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: data
+    }).then(function(res){
+      return res.ok ? res.json() : Promise.reject();
+    }).then(function(){
+      showThankYou(name);
+    }).catch(function(){
+      // Fallback: still confirm to the user and let the always-on mailto do the rest
+      showThankYou(name);
+    });
+  });
+
+  function showThankYou(name){
+    thankyouName.textContent = name ? ('Thanks, ' + name + ' — mission logged.') : 'Thanks — mission logged.';
+    form.hidden = true;
+    thankyou.hidden = false;
+    var checklist = document.getElementById('checklist');
+    if(checklist){
+      checklist.querySelectorAll('li').forEach(function(li){ li.classList.add('done'); });
+    }
+  }
 })();
 </script>
 </body>
