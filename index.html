@@ -195,7 +195,7 @@ section{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction
   background:rgba(255,255,255,.03);}
 .eyebrow .blip{width:6px;height:6px;border-radius:50%;background:var(--brand);box-shadow:0 0 8px var(--brand);animation:pulse 1.8s ease-in-out infinite;}
 @keyframes pulse{0%,100%{opacity:.4;transform:scale(1);}50%{opacity:1;transform:scale(1.4);}}
-.kinetic{font-size:clamp(42px,7.4vw,96px);max-width:14ch;margin:0 auto 26px;}
+.kinetic{font-size:clamp(38px,6.6vw,88px);max-width:20ch;margin:0 auto 26px;}
 @media (min-width:980px){.kinetic{margin:0 0 26px;}}
 .kinetic .row{display:block;}
 .tw-hero-line{display:inline-block;}
@@ -1273,8 +1273,13 @@ footer{position:relative;z-index:2;padding:60px 0 50px;border-top:1px solid var(
   var cursor2 = document.getElementById('heroCursor2');
   if(!line1El || !line2El) return;
 
-  var LINE1 = 'WE BUILD';
-  var LINE2 = 'OUTSIDE THE BOX.';
+  var HEADLINES = [
+    ['WE BUILD', 'OUTSIDE THE BOX.'],
+    ['NOT ANOTHER', 'AGENCY ON EARTH.'],
+    ['NO FAVORITE TOOL.', 'EVERY TOOL AVAILABLE.'],
+    ['YOUR MISSION', 'STARTS HERE.'],
+    ['WEBSITES. APPS.', 'WHATEVER IT TAKES.']
+  ];
   var TYPE_SPEED = 62;    // ms per character while typing
   var DELETE_SPEED = 32;  // ms per character while deleting
   var HOLD_FULL = 2400;   // ms pause once fully typed
@@ -1282,8 +1287,8 @@ footer{position:relative;z-index:2;padding:60px 0 50px;border-top:1px solid var(
 
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(reduced){
-    line1El.textContent = LINE1;
-    line2El.textContent = LINE2;
+    line1El.textContent = HEADLINES[0][0];
+    line2El.textContent = HEADLINES[0][1];
     if(cursor1) cursor1.style.display = 'none';
     if(cursor2) cursor2.style.display = 'none';
     return;
@@ -1311,7 +1316,10 @@ footer{position:relative;z-index:2;padding:60px 0 50px;border-top:1px solid var(
   async function loop(){
     setCursor(cursor1, false); setCursor(cursor2, false);
     line1El.textContent = ''; line2El.textContent = '';
+    var idx = 0;
     while(true){
+      var pair = HEADLINES[idx % HEADLINES.length];
+      var LINE1 = pair[0], LINE2 = pair[1];
       await typeInto(line1El, LINE1, TYPE_SPEED, cursor1);
       setCursor(cursor1, false);
       await typeInto(line2El, LINE2, TYPE_SPEED, cursor2);
@@ -1320,6 +1328,7 @@ footer{position:relative;z-index:2;padding:60px 0 50px;border-top:1px solid var(
       setCursor(cursor2, false);
       await deleteFrom(line1El, LINE1, DELETE_SPEED, cursor1);
       await sleep(HOLD_EMPTY);
+      idx++;
     }
   }
   loop();
